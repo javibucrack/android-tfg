@@ -43,29 +43,42 @@ class MainActivity : AppCompatActivity() {
 
 
         val enterButton = findViewById<Button>(R.id.enterButton)
+
+        var number: Int = 0
         enterButton.setOnClickListener { v: View? ->
-//            val selectedRole = roleSpinner.selectedItem.toString()
-//            if (selectedRole == "Estudiante") {
-//                val intent = Intent(this, StudentHome::class.java)
-//                startActivity(intent)
-//            } else if (selectedRole == "Profesor") {
-//                val intent = Intent(this, TeacherHome::class.java)
-//                startActivity(intent)
-//            }
+            val selectedRole = roleSpinner.selectedItem.toString()
+            if (selectedRole == "Estudiante") {
+                number = 1
+            } else if (selectedRole == "Profesor") {
+                number = 2
+            } else if (selectedRole == "Administrador") {
+                number = 3
+            }
 
 
             val user = login.searchUser(
-                1,
+                number,
                 findViewById<EditText>(R.id.emailPlainText).text.toString(),
                 findViewById<EditText>(R.id.passwordPlainText).text.toString()
             )
-            val intent = Intent(this, StudentHome::class.java)
+            val studentIntent = Intent(this, StudentHome::class.java)
+            val teacherIntent = Intent(this, TeacherHome::class.java)
 
             user.enqueue(object : Callback<Boolean> {
                 override fun onResponse(call: Call<Boolean>, response: Response<Boolean>) {
                     when (response.code()) {
                         200 -> {
-                            startActivity(intent)
+                            when (number) {
+                                1 -> {
+                                    startActivity(studentIntent)
+                                }
+                                3 -> {
+                                    startActivity(teacherIntent)
+                                }
+                            }
+                        }
+                        403 -> {
+                            startActivity(teacherIntent)
                         }
                         404 -> {
                             Log.e("login", "Código de respuesta desconocido ${response.code()}")
