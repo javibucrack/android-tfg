@@ -20,7 +20,7 @@ class ProfileScreen : AppCompatActivity() {
         profileName.text = user.name
 
         val profileSurname = findViewById<TextView>(R.id.showSurnameProfile)
-        val surname = user.first_surname + user.second_surname
+        val surname = user.first_surname + " " + user.second_surname
         profileSurname.text = surname
 
         val profileEmail = findViewById<TextView>(R.id.showEmailProfile)

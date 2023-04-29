@@ -28,12 +28,20 @@
         app:layout_constraintGuide_begin="75dp" />
 
     <TextView
-        android:id="@+id/teacherTextId"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="ERES UN PROFESOR"
-        app:layout_constraintEnd_toStartOf="@+id/guideline9"
+        android:text="Bienvendio:"
         app:layout_constraintStart_toStartOf="@+id/guideline8"
         app:layout_constraintTop_toTopOf="@+id/guideline10" />
+
+    <TextView
+        android:id="@+id/teacherNameTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintEnd_toStartOf="@+id/guideline9"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/guideline10" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

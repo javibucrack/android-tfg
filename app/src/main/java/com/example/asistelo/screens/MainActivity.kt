@@ -35,17 +35,14 @@ class MainActivity : AppCompatActivity() {
                 findViewById<EditText>(R.id.emailPlainText).text.toString(),
                 findViewById<EditText>(R.id.passwordPlainText).text.toString()
             )
-//            val studentIntent = Intent(this, StudentHome::class.java)
-            val teacherIntent = Intent(this, TeacherHome::class.java)
-
 
             user.enqueue(object : Callback<UserDto> {
                 override fun onResponse(call: Call<UserDto>, response: Response<UserDto>) {
                     when (response.code()) {
                         200 -> {
+                            val user = response.body()
                             when (response.body()?.role?.name) {
                                 "student" -> {
-                                    val user = response.body()
                                     if (user != null) {
                                         val studentIntent =
                                             Intent(this@MainActivity, StudentHome::class.java)
@@ -54,6 +51,9 @@ class MainActivity : AppCompatActivity() {
                                     }
                                 }
                                 "teacher" -> {
+                                    val teacherIntent =
+                                        Intent(this@MainActivity, TeacherHome::class.java)
+                                    teacherIntent.putExtra("user", user)
                                     startActivity(teacherIntent)
                                 }
                                 "admin" -> {
