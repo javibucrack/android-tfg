@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
                 findViewById<EditText>(R.id.emailPlainText).text.toString(),
                 findViewById<EditText>(R.id.passwordPlainText).text.toString()
             )
-            val studentIntent = Intent(this, StudentHome::class.java)
+//            val studentIntent = Intent(this, StudentHome::class.java)
             val teacherIntent = Intent(this, TeacherHome::class.java)
 
 
@@ -45,7 +45,13 @@ class MainActivity : AppCompatActivity() {
                         200 -> {
                             when (response.body()?.role?.name) {
                                 "student" -> {
-                                    startActivity(studentIntent)
+                                    val user = response.body()
+                                    if (user != null) {
+                                        val studentIntent =
+                                            Intent(this@MainActivity, StudentHome::class.java)
+                                        studentIntent.putExtra("user", user)
+                                        startActivity(studentIntent)
+                                    }
                                 }
                                 "teacher" -> {
                                     startActivity(teacherIntent)

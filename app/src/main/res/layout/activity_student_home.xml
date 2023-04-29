@@ -31,9 +31,18 @@
         android:id="@+id/studentTextId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="ERES UN ESTUDIANTE"
-        app:layout_constraintEnd_toStartOf="@+id/guideline6"
+        android:layout_marginStart="40dp"
+        android:text="BIENVENIDO:"
         app:layout_constraintStart_toStartOf="@+id/guideline5"
+        app:layout_constraintTop_toTopOf="@+id/guideline7" />
+
+    <TextView
+        android:id="@+id/studentNameTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/studentTextId"
+        app:layout_constraintEnd_toStartOf="@+id/guideline6"
+        app:layout_constraintStart_toEndOf="@+id/studentTextId"
         app:layout_constraintTop_toTopOf="@+id/guideline7" />
 </androidx.constraintlayout.widget.ConstraintLayout>

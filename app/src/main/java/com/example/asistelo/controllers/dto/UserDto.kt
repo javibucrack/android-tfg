@@ -2,6 +2,7 @@ package com.example.asistelo.controllers.dto
 
 import com.fasterxml.jackson.annotation.JsonFormat
 import com.fasterxml.jackson.annotation.JsonProperty
+import java.io.Serializable
 import java.util.Date
 
 data class UserDto(
@@ -17,4 +18,4 @@ data class UserDto(
     @JsonProperty("userCre") val usu_cre: Int,
     @JsonProperty("userMod") val usu_mod: Int?,
     @JsonProperty("role") val role: RolDto,
-)
+) : Serializable
