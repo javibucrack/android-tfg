@@ -37,7 +37,6 @@
         android:hint="Email"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:text="test@email.com"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/guideline4" />
@@ -67,24 +66,14 @@
         app:layout_constraintStart_toStartOf="@+id/passwordPlainText"
         app:layout_constraintTop_toBottomOf="@+id/passwordPlainText" />
 
-    <TextView
-        android:id="@+id/selectRol"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="Selecciona tu rol :"
-        app:layout_constraintEnd_toEndOf="@+id/passwordPlainText"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/passwordPlainText"
-        app:layout_constraintTop_toBottomOf="@+id/passwordPlainText" />
-
-    <Spinner
-        android:id="@+id/roleSpinner"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/selectRol"
-        app:layout_constraintStart_toEndOf="@+id/selectRol"
-        app:layout_constraintTop_toTopOf="@+id/selectRol"
-        app:layout_constraintVertical_bias="0.0" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="263dp"
+        android:layout_height="306dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/asistlo_logo_removebg_preview" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
