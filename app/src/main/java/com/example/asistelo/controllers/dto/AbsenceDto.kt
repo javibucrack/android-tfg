@@ -8,9 +8,9 @@ import java.util.*
 data class AbsenceDto(
     @JsonProperty("id") val id: Int,
     @JsonProperty("numHours") val num_hours: Int,
-    @JsonProperty("date") @JsonFormat(pattern = "yyyy-MM-dd") val date: Date,
-    @JsonProperty("dateCre") @JsonFormat(pattern = "yyyy-MM-dd") val date_cre: Date,
-    @JsonProperty("dateMod") @JsonFormat(pattern = "yyyy-MM-dd") val date_mod: Date?,
-    @JsonProperty("userCre") val usu_cre: Int,
-    @JsonProperty("userMod") val usu_mod: Int?,
+    @JsonProperty("date") @JsonFormat(pattern = "dd/MM/yyyy") val date: Date,
+    @JsonProperty("dateMod") @JsonFormat(pattern = "dd/MM/yyyy") val date_mod: Date?,
+    @JsonProperty("teacher") val usu_cre: UserDto,
+    @JsonProperty("userMod") val usu_mod: UserDto?,
+    @JsonProperty("student") val student: UserDto,
 ) : Serializable

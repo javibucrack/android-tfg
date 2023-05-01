@@ -42,22 +42,22 @@ class MainActivity : AppCompatActivity() {
                         200 -> {
                             val user = response.body()
                             when (response.body()?.role?.name) {
-                                "student" -> {
-                                    if (user != null) {
-                                        val studentIntent =
-                                            Intent(this@MainActivity, StudentHome::class.java)
-                                        studentIntent.putExtra("user", user)
-                                        startActivity(studentIntent)
-                                    }
+                                "Student" -> {
+                                    val studentIntent =
+                                        Intent(this@MainActivity, StudentHome::class.java)
+                                    studentIntent.putExtra("student", user)
+                                    startActivity(studentIntent)
+                                    finish()
                                 }
-                                "teacher" -> {
+                                "Teacher" -> {
                                     val teacherIntent =
                                         Intent(this@MainActivity, TeacherHome::class.java)
-                                    teacherIntent.putExtra("user", user)
+                                    teacherIntent.putExtra("teacher", user)
                                     startActivity(teacherIntent)
+                                    finish()
                                 }
                                 "admin" -> {
-
+                                    //TODO: añadir las funciones que tiene un administrador
                                 }
                             }
                         }

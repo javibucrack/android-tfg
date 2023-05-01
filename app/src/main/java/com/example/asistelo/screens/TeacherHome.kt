@@ -14,7 +14,7 @@ class TeacherHome : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_teacher_home)
 
-        val user = intent.getSerializableExtra("user") as UserDto
+        val user = intent.getSerializableExtra("teacher") as UserDto
 
         val teacherNameTextView = findViewById<TextView>(R.id.teacherNameTextView)
         teacherNameTextView.text = user.name
@@ -30,7 +30,7 @@ class TeacherHome : AppCompatActivity() {
             R.id.profileMenu -> {
                 val profileIntent =
                     Intent(this@TeacherHome, ProfileScreen::class.java)
-                profileIntent.putExtra("user", intent.getSerializableExtra("user") as UserDto)
+                profileIntent.putExtra("user", intent.getSerializableExtra("teacher") as UserDto)
                 startActivity(profileIntent)
                 // Open profile activity
                 return true
