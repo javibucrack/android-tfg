@@ -17,7 +17,7 @@ data class UserDto(
     @JsonProperty("secondSurname") val second_surname: String?,
     @JsonProperty("userCre") val usu_cre: Int?,
     @JsonProperty("userMod") val usu_mod: Int?,
-    @JsonProperty("role") val role: RolDto,
+    @JsonProperty("role") val role: RolDto?,
     @JsonProperty("absenceList") val absences: List<AbsenceDto>?,
     @JsonProperty("subjectList") val subjects: List<SubjectDto>?,
     @JsonProperty("classList") val classes: List<ClassDto>?

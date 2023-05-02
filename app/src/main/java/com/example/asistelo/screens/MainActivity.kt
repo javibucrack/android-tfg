@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         val enterButton = findViewById<Button>(R.id.enterButton)
 
         enterButton.setOnClickListener {
-            val user = login.searchUser(
+            val user = login.getUser(
                 findViewById<EditText>(R.id.emailPlainText).text.toString(),
                 findViewById<EditText>(R.id.passwordPlainText).text.toString()
             )

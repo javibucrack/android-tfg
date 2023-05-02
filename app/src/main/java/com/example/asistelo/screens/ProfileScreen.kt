@@ -27,6 +27,6 @@ class ProfileScreen : AppCompatActivity() {
         profileEmail.text = user.email
 
         val profileRol = findViewById<TextView>(R.id.showRolProfile)
-        profileRol.text = user.role.name
+        profileRol.text = user.role!!.name
     }
 }
