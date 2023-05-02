@@ -67,6 +67,16 @@
         app:layout_constraintTop_toBottomOf="@+id/emailProfileTextView" />
 
     <TextView
+        android:id="@+id/classProfileTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Class:"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="@+id/guideline11"
+        app:layout_constraintTop_toBottomOf="@+id/rolProfileTextView" />
+
+    <TextView
         android:id="@+id/showNameProfile"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -105,5 +115,15 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline13"
         app:layout_constraintStart_toEndOf="@+id/rolProfileTextView"
         app:layout_constraintTop_toTopOf="@+id/rolProfileTextView" />
+
+    <TextView
+        android:id="@+id/showClassProfile"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/classProfileTextView"
+        app:layout_constraintEnd_toStartOf="@+id/guideline13"
+        app:layout_constraintStart_toEndOf="@+id/classProfileTextView"
+        app:layout_constraintTop_toTopOf="@+id/classProfileTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
