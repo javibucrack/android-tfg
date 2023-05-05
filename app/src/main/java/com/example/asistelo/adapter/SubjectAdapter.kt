@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.asistelo.R
-import com.example.asistelo.controllers.dto.SubjectDto
 
 class SubjectAdapter(val subjects: List<String>, val context: Context) :
     RecyclerView.Adapter<SubjectAdapter.ItemViewHolder>() {

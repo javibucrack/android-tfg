@@ -11,7 +11,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.asistelo.R
 import com.example.asistelo.controllers.UserController
-import com.example.asistelo.controllers.dto.SubjectDto
+import com.example.asistelo.controllers.dto.AbsenceDto
 import com.example.asistelo.controllers.dto.UserDto
 import retrofit2.Call
 import retrofit2.Callback
@@ -32,7 +32,7 @@ class StudentHome : AppCompatActivity() {
             .build()
 
 
-        val studentSubjects = retrofit.create(UserController::class.java)
+        val studentController = retrofit.create(UserController::class.java)
 
         val student = intent.getSerializableExtra("student") as UserDto
 
@@ -41,9 +41,10 @@ class StudentHome : AppCompatActivity() {
 
         val showSubjectButton = findViewById<Button>(R.id.viewSubjectsButton)
 
+
         showSubjectButton.setOnClickListener {
 
-            val user = studentSubjects.getStudent(student.id)
+            val user = studentController.getStudent(student.id)
 
             user.enqueue(object : Callback<UserDto> {
                 override fun onResponse(call: Call<UserDto>, response: Response<UserDto>) {
@@ -94,6 +95,63 @@ class StudentHome : AppCompatActivity() {
             })
 
         }
+
+        val showAbsencesButton = findViewById<Button>(R.id.viewAbsencesButton)
+
+        showAbsencesButton.setOnClickListener {
+
+            val user = studentController.getAbsences(student.id)
+
+            user.enqueue(object : Callback<UserDto> {
+                override fun onResponse(call: Call<UserDto>, response: Response<UserDto>) {
+                    when (response.code()) {
+                        200 -> {
+                            val absenceList = response.body()!!.absences
+
+                            val absences = mutableListOf<AbsenceDto>()
+
+                            if (absenceList != null) {
+                                for (absence in absenceList) {
+                                    absences.add(absence)
+                                }
+                            }
+                            val showAbsencesIntent =
+                                Intent(this@StudentHome, StudentAbsencesScreen::class.java)
+                            showAbsencesIntent.putExtra(
+                                "student",
+                                intent.getSerializableExtra("student") as UserDto
+                            )
+                            showAbsencesIntent.putExtra(
+                                "absences",
+                                ArrayList(absences)
+                            )
+                            startActivity(showAbsencesIntent)
+                        }
+                        404 -> {
+                            Log.e("login", "Código de respuesta desconocido ${response.code()}")
+                            Toast.makeText(
+                                this@StudentHome,
+                                " ${response.body()}",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                    }
+
+                }
+
+                override fun onFailure(call: Call<UserDto>, t: Throwable) {
+                    Toast.makeText(
+                        this@StudentHome,
+                        "${t.message}",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+
+
+            })
+
+        }
+
     }
 
 

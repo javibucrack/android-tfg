@@ -25,4 +25,9 @@ interface UserController {
     fun getStudent(
         @Path("idUser") idUser: Int
     ): Call<UserDto>
+
+    @GET("user/{idUser}/absences")
+    fun getAbsences(
+        @Path("idUser") idUser: Int
+    ): Call<UserDto>
 }
