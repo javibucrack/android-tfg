@@ -13,5 +13,5 @@ data class ClassDto(
     @JsonProperty("userCre") val usu_cre: UserDto?,
     @JsonProperty("userMod") val usu_mod: UserDto?,
     @JsonProperty("students") val students: List<UserDto>?,
-    @JsonProperty("teachers") val teachers: List<UserDto>
+    @JsonProperty("teachers") val teachers: List<UserDto>?
 ) : Serializable

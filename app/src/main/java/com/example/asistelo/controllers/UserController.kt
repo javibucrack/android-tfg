@@ -14,12 +14,12 @@ interface UserController {
         @Path("pass") pass: String
     ): Call<UserDto>
 
-    @GET("/user/{role}")
-    fun getAllStudents(
-        @Query("subject") subject: String,
-        @Query("class") className: String,
-        @Path("role") role: String,
-    ): Call<List<UserDto>>
+//    @GET("/user/{role}")
+//    fun getAllStudents(
+//        @Query("subject") subject: String,
+//        @Query("class") className: String,
+//        @Path("role") role: String,
+//    ): Call<List<UserDto>>
 
     @GET("/user/{idUser}")
     fun getStudent(
