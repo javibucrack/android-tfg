@@ -28,7 +28,7 @@ class ClassesOfTeacherScreen : AppCompatActivity() {
 
         val classesRecyclerView = findViewById<RecyclerView>(R.id.classesRecyclerView)
 
-        val classAdapter = ClassAdapter(classList, applicationContext)
+        val classAdapter = ClassAdapter(classList, teacher, applicationContext)
 
         classesRecyclerView.layoutManager =
             GridLayoutManager(this, 1, RecyclerView.VERTICAL, false)

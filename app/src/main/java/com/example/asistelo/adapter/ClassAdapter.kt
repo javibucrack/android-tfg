@@ -9,9 +9,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.asistelo.R
 import com.example.asistelo.controllers.dto.ClassDto
+import com.example.asistelo.controllers.dto.UserDto
 import com.example.asistelo.screens.StudentsOfClassScreen
 
-class ClassAdapter(val classes: List<ClassDto>, val context: Context) :
+class ClassAdapter(val classes: List<ClassDto>, val teacher:UserDto,val context: Context) :
     RecyclerView.Adapter<ClassAdapter.ItemViewHolder>() {
 
     private val layoutInflater = LayoutInflater.from(context)
@@ -35,6 +36,7 @@ class ClassAdapter(val classes: List<ClassDto>, val context: Context) :
             val intent = Intent(holder.itemView.context, StudentsOfClassScreen::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             intent.putExtra("class", classe)
+            intent.putExtra("teacher",teacher)
             holder.itemView.context.startActivity(intent)
         }
     }

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.asistelo.R
 import com.example.asistelo.adapter.StudentAdapter
 import com.example.asistelo.controllers.dto.ClassDto
+import com.example.asistelo.controllers.dto.UserDto
 import com.example.asistelo.decorator.SimpleItemDecoration
 
 class StudentsOfClassScreen : AppCompatActivity() {
@@ -18,6 +19,8 @@ class StudentsOfClassScreen : AppCompatActivity() {
 
         val className = intent.getSerializableExtra("class") as ClassDto
 
+        val teacher = intent.getSerializableExtra("teacher") as UserDto
+
         val classNameTextView = findViewById<TextView>(R.id.showClassNameInStudentList)
         classNameTextView.text = className.name
 
@@ -26,7 +29,7 @@ class StudentsOfClassScreen : AppCompatActivity() {
         val studentsRecyclerView = findViewById<RecyclerView>(R.id.studentsOfClassRecyclerView)
 
         if (students!!.size > 1) {
-            val studentAdapter = StudentAdapter(students, applicationContext)
+            val studentAdapter = StudentAdapter(students,teacher ,applicationContext)
             studentsRecyclerView.layoutManager =
                 GridLayoutManager(this, 1, RecyclerView.VERTICAL, false)
 

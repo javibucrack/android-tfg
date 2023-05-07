@@ -18,7 +18,7 @@ class AbsenceAdapter(val absences: List<AbsenceDto>, val context: Context) :
         fun load(absence: AbsenceDto) {
             val subjectNameTextView =
                 itemView.findViewById<TextView>(R.id.showSubjectTextViewInAbsences)
-            subjectNameTextView.text = absence.subject.name
+            subjectNameTextView.text = absence.subject!!.name
             val dateTextView = itemView.findViewById<TextView>(R.id.showDateInAbsences)
             dateTextView.text = absence.date.toString()
             val numHoursTextView = itemView.findViewById<TextView>(R.id.showNumHoursInAbsences)
