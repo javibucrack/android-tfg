@@ -8,15 +8,15 @@ import java.util.*
 data class SubjectDto(
 
     @JsonProperty("id") val id: Int,
-    @JsonProperty("totalHours") val total_hours: Int?,
-    @JsonProperty("dateCre") @JsonFormat(pattern = "dd/MM/yyyy") val date_cre: Date?,
-    @JsonProperty("dateMod") @JsonFormat(pattern = "dd/MM/yyyy") val date_mod: Date?,
+    @JsonProperty("totalHours") val totalHours: Int?,
+    @JsonProperty("dateCre") @JsonFormat(pattern = "dd/MM/yyyy") val dateCre: Date?,
+    @JsonProperty("dateMod") @JsonFormat(pattern = "dd/MM/yyyy") val dateMod: Date?,
     @JsonProperty("name") val name: String,
-    @JsonProperty("userCre") val usu_cre: UserDto?,
-    @JsonProperty("userMod") val usu_mod: UserDto?,
-    @JsonProperty("student") val students: List<UserDto>?,
+    @JsonProperty("userCre") val userCre: UserDto?,
+    @JsonProperty("userMod") val userMod: UserDto?,
+    @JsonProperty("student") val student: List<UserDto>?,
     @JsonProperty("teacher") val teacher: List<UserDto>?,
-    @JsonProperty("class") val classList: List<ClassDto>?,
-    @JsonProperty("absence") val absences: List<AbsenceDto>?,
+    @JsonProperty("classes") val classes: List<ClassDto>?,
+    @JsonProperty("absence") val absence: List<AbsenceDto>?,
     @JsonProperty("percentage")val percentage:Double?
 ) : Serializable

@@ -21,7 +21,7 @@ class StudentAbsencesScreen : AppCompatActivity() {
         val student = intent.getSerializableExtra("student") as UserDto
 
         val nameTextView = findViewById<TextView>(R.id.showUserNameInAbsences)
-        nameTextView.text = student.name + " " + student.first_surname + " " + student.second_surname
+        nameTextView.text = student.name + " " + student.firstSurname + " " + student.secondSurname
 
         val absencesList=intent.getSerializableExtra("absences") as List<AbsenceDto>
 

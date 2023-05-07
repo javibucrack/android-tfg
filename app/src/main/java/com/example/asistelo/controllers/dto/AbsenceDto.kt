@@ -7,11 +7,11 @@ import java.util.*
 
 data class AbsenceDto(
     @JsonProperty("id") val id: Int?,
-    @JsonProperty("numHours") val num_hours: Int?,
+    @JsonProperty("numHours") val numHours: Int?,
     @JsonProperty("date") @JsonFormat(pattern = "dd/MM/yyyy") val date: Date?,
-    @JsonProperty("dateMod") @JsonFormat(pattern = "dd/MM/yyyy") val date_mod: Date?,
+    @JsonProperty("dateMod") @JsonFormat(pattern = "dd/MM/yyyy") val dateMod: Date?,
     @JsonProperty("teacher") val teacher: UserDto?,
-    @JsonProperty("userMod") val usu_mod: UserDto?,
+    @JsonProperty("userMod") val userMod: UserDto?,
     @JsonProperty("student") val student: UserDto?,
-    @JsonProperty("subject")val subject:SubjectDto?
+    @JsonProperty("subject") val subject: SubjectDto?
 ) : Serializable

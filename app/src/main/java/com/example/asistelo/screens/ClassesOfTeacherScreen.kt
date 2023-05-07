@@ -22,7 +22,7 @@ class ClassesOfTeacherScreen : AppCompatActivity() {
 
         val nameTextView = findViewById<TextView>(R.id.showUserInClasses)
         nameTextView.text =
-            teacher.name + " " + teacher.first_surname + " " + teacher.second_surname
+            teacher.name + " " + teacher.firstSurname + " " + teacher.secondSurname
 
         val classList = intent.getSerializableExtra("classes") as List<ClassDto>
 

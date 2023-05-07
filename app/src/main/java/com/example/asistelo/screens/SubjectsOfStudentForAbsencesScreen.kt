@@ -7,7 +7,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.asistelo.R
-import com.example.asistelo.adapter.SubjectAdapter
 import com.example.asistelo.adapter.SubjectForAbsencesAdapter
 import com.example.asistelo.controllers.dto.UserDto
 import com.example.asistelo.decorator.SimpleItemDecoration
@@ -22,14 +21,14 @@ class SubjectsOfStudentForAbsencesScreen : AppCompatActivity() {
 
         val teacher = intent.getSerializableExtra("teacher") as UserDto
 
-        val subjectList = student.subjects
+        val subjectList = student.subjectList
 
         val studentNameTextView = findViewById<TextView>(R.id.showStudentNameInSubjectList)
-        if (student.second_surname == null) {
-            studentNameTextView.text = student.name + " " + student.first_surname
+        if (student.secondSurname == null) {
+            studentNameTextView.text = student.name + " " + student.firstSurname
         } else {
             studentNameTextView.text =
-                student.name + " " + student.first_surname + " " + student.second_surname
+                student.name + " " + student.firstSurname + " " + student.secondSurname
         }
 
         val subjectsRecyclerView = findViewById<RecyclerView>(R.id.subjectsOfStudentRecyclerView)

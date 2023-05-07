@@ -10,7 +10,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.asistelo.R
 import com.example.asistelo.controllers.dto.UserDto
-import com.example.asistelo.screens.StudentSubjectsScreen
 import com.example.asistelo.screens.SubjectsOfStudentForAbsencesScreen
 
 class StudentAdapter(val students: List<UserDto>, val teacher: UserDto, val context: Context) :
@@ -22,11 +21,11 @@ class StudentAdapter(val students: List<UserDto>, val teacher: UserDto, val cont
         @SuppressLint("SetTextI18n")
         fun load(student: UserDto) {
             val studentName = itemView.findViewById<TextView>(R.id.showStudentName)
-            if (student.second_surname == null) {
-                studentName.text = student.name + " " + student.first_surname
+            if (student.secondSurname == null) {
+                studentName.text = student.name + " " + student.firstSurname
             } else {
                 studentName.text =
-                    student.name + " " + student.first_surname + " " + student.second_surname
+                    student.name + " " + student.firstSurname + " " + student.secondSurname
             }
 
         }

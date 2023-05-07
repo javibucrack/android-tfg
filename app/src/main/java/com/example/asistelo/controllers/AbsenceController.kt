@@ -10,6 +10,9 @@ interface AbsenceController {
 
     @POST("/absence/{idSubject}/{idStudent}/{idTeacher}")
     fun newAbsence(
-        @Body absence: AbsenceDto
-    ): Call<AbsenceDto>
+        @Body absence: AbsenceDto,
+        @Path("idSubject") idSubject: Int,
+        @Path("idStudent") idStudent: Int,
+        @Path("idTeacher") idTeacher: Int,
+    ): Call<Void>
 }

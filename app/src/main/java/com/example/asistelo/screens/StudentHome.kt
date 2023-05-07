@@ -50,7 +50,7 @@ class StudentHome : AppCompatActivity() {
                 override fun onResponse(call: Call<UserDto>, response: Response<UserDto>) {
                     when (response.code()) {
                         200 -> {
-                            val subjectList = response.body()!!.subjects
+                            val subjectList = response.body()!!.subjectList
 
                             val subjects = mutableListOf<String>()
 
@@ -106,7 +106,7 @@ class StudentHome : AppCompatActivity() {
                 override fun onResponse(call: Call<UserDto>, response: Response<UserDto>) {
                     when (response.code()) {
                         200 -> {
-                            val absenceList = response.body()!!.absences
+                            val absenceList = response.body()!!.absenceList
 
                             val absences = mutableListOf<AbsenceDto>()
 

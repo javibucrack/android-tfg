@@ -22,7 +22,7 @@ class AbsenceAdapter(val absences: List<AbsenceDto>, val context: Context) :
             val dateTextView = itemView.findViewById<TextView>(R.id.showDateInAbsences)
             dateTextView.text = absence.date.toString()
             val numHoursTextView = itemView.findViewById<TextView>(R.id.showNumHoursInAbsences)
-            numHoursTextView.text = absence.num_hours.toString()
+            numHoursTextView.text = absence.numHours.toString()
         }
     }
 

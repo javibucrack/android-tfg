@@ -45,4 +45,9 @@ dependencies {
 //    Retrofit dependencies
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation group: 'com.squareup.retrofit2', name: 'converter-jackson', version: '2.9.0'
+
+
+    dependencies {
+        implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2"
+    }
 }
