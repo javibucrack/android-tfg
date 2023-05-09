@@ -1,13 +1,12 @@
 package com.example.asistelo.screens
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.CalendarView
-import android.widget.EditText
-import android.widget.TextView
+import android.widget.*
 import com.example.asistelo.R
 import com.example.asistelo.controllers.AbsenceController
 import com.example.asistelo.controllers.dto.AbsenceDto
@@ -17,6 +16,9 @@ import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.jackson.JacksonConverterFactory
 import java.util.Date
@@ -89,7 +91,52 @@ class AddAbsenceScreen : AppCompatActivity() {
                 null
             )
             GlobalScope.launch(Dispatchers.IO) {
-                absenceController.newAbsence(absence, subject.id, student.id, teacher.id).execute()
+//                absenceController.newAbsence(absence, subject.id, student.id, teacher.id).execute()
+                val action =
+                    absenceController.newAbsence(absence, subject.id, student.id, teacher.id)
+                action.enqueue(object : Callback<Void> {
+                    override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                        when (response.code()) {
+                            201 -> {
+                                Toast.makeText(
+                                    this@AddAbsenceScreen,
+                                    "Falta creada correctamente",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                            }
+                            404 -> {
+                                Toast.makeText(
+                                    this@AddAbsenceScreen,
+                                    "User not found",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                            }
+                            406 -> {
+                                Toast.makeText(
+                                    this@AddAbsenceScreen,
+                                    "Numero de horas no válido",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                            }
+                            422 -> {
+                                Toast.makeText(
+                                    this@AddAbsenceScreen,
+                                    "Fecha no válida",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                            }
+                        }
+
+                    }
+
+                    override fun onFailure(call: Call<Void>, t: Throwable) {
+                        Toast.makeText(
+                            this@AddAbsenceScreen,
+                            "${t.message}",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                })
             }
         }
     }
