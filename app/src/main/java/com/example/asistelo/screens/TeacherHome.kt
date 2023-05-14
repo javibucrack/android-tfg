@@ -38,7 +38,7 @@ class TeacherHome : AppCompatActivity() {
 
         showClassesButton.setOnClickListener {
 
-            val user = teacherController.getClasses(teacher.id)
+            val user = teacherController.getClasses(teacher.id!!)
 
             user.enqueue(object : Callback<List<ClassDto>> {
                 override fun onResponse(
@@ -106,7 +106,11 @@ class TeacherHome : AppCompatActivity() {
                 // Open profile activity
                 return true
             }
-            R.id.settingsMenu -> {
+            R.id.logOutMenu -> {
+                val logOutIntent =
+                    Intent(this@TeacherHome, MainActivity::class.java)
+                Toast.makeText(this@TeacherHome, "Cerrando sesión", Toast.LENGTH_LONG).show()
+                startActivity(logOutIntent)
                 // Open settings activity
                 return true
             }

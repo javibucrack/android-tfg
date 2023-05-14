@@ -44,7 +44,7 @@ class StudentHome : AppCompatActivity() {
 
         showSubjectButton.setOnClickListener {
 
-            val user = studentController.getStudent(student.id)
+            val user = studentController.getStudent(student.id!!)
 
             user.enqueue(object : Callback<UserDto> {
                 override fun onResponse(call: Call<UserDto>, response: Response<UserDto>) {
@@ -100,7 +100,7 @@ class StudentHome : AppCompatActivity() {
 
         showAbsencesButton.setOnClickListener {
 
-            val user = studentController.getAbsences(student.id)
+            val user = studentController.getAbsences(student.id!!)
 
             user.enqueue(object : Callback<UserDto> {
                 override fun onResponse(call: Call<UserDto>, response: Response<UserDto>) {
@@ -173,7 +173,11 @@ class StudentHome : AppCompatActivity() {
                 // Open profile activity
                 return true
             }
-            R.id.settingsMenu -> {
+            R.id.logOutMenu -> {
+                val logOutIntent =
+                    Intent(this@StudentHome, MainActivity::class.java)
+                Toast.makeText(this@StudentHome, "Cerrando sesión", Toast.LENGTH_LONG).show()
+                startActivity(logOutIntent)
                 // Open settings activity
                 return true
             }

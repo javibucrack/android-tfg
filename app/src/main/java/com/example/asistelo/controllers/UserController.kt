@@ -1,10 +1,9 @@
 package com.example.asistelo.controllers
 
+import com.example.asistelo.controllers.dto.AbsenceDto
 import com.example.asistelo.controllers.dto.UserDto
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface UserController {
 
@@ -13,13 +12,6 @@ interface UserController {
         @Path("email") email: String,
         @Path("pass") pass: String
     ): Call<UserDto>
-
-//    @GET("/user/{role}")
-//    fun getAllStudents(
-//        @Query("subject") subject: String,
-//        @Query("class") className: String,
-//        @Path("role") role: String,
-//    ): Call<List<UserDto>>
 
     @GET("/user/{idUser}")
     fun getStudent(
@@ -30,4 +22,10 @@ interface UserController {
     fun getAbsences(
         @Path("idUser") idUser: Int
     ): Call<UserDto>
+
+    @POST("/user/{idUserCre}")
+    fun addUser(
+        @Body user: UserDto,
+        @Path("idUserCre") idUserCre: Int
+    ): Call<Void>
 }

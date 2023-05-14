@@ -56,7 +56,12 @@ class MainActivity : AppCompatActivity() {
                                     startActivity(teacherIntent)
                                     finish()
                                 }
-                                "admin" -> {
+                                "Admin" -> {
+                                    val adminIntent =
+                                        Intent(this@MainActivity, AdminHome::class.java)
+                                    adminIntent.putExtra("admin", user)
+                                    startActivity(adminIntent)
+                                    finish()
                                     //TODO: añadir las funciones que tiene un administrador
                                 }
                             }

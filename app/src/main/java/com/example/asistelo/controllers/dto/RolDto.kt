@@ -5,5 +5,5 @@ import java.io.Serializable
 
 data class RolDto(
     @JsonProperty("id") val id: Int,
-    @JsonProperty("name") val name: String
+    @JsonProperty("name") val name: String?
 ) : Serializable

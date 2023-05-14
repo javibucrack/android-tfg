@@ -1,12 +1,10 @@
 package com.example.asistelo.screens
 
 import android.annotation.SuppressLint
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import com.example.asistelo.R
 import com.example.asistelo.controllers.AbsenceController
 import com.example.asistelo.controllers.dto.AbsenceDto
@@ -21,7 +19,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.jackson.JacksonConverterFactory
-import java.util.Date
+import java.util.*
 
 class AddAbsenceScreen : AppCompatActivity() {
     @OptIn(DelicateCoroutinesApi::class)
@@ -75,9 +73,6 @@ class AddAbsenceScreen : AppCompatActivity() {
 
         val addAbsenceButton = findViewById<Button>(R.id.addAbsenceButton)
 
-        //TODO: arreglar el metodo que envia la ausencia a la base de datos
-
-
         addAbsenceButton.setOnClickListener {
             val numHours = numHoursText.text.toString().toInt()
             val absence = AbsenceDto(
@@ -93,7 +88,7 @@ class AddAbsenceScreen : AppCompatActivity() {
             GlobalScope.launch(Dispatchers.IO) {
 //                absenceController.newAbsence(absence, subject.id, student.id, teacher.id).execute()
                 val action =
-                    absenceController.newAbsence(absence, subject.id, student.id, teacher.id)
+                    absenceController.newAbsence(absence, subject.id, student.id!!, teacher.id!!)
                 action.enqueue(object : Callback<Void> {
                     override fun onResponse(call: Call<Void>, response: Response<Void>) {
                         when (response.code()) {
