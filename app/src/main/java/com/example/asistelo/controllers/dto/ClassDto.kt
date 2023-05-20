@@ -6,7 +6,7 @@ import java.io.Serializable
 import java.util.*
 
 data class ClassDto(
-    @JsonProperty("id") val id: Int,
+    @JsonProperty("id") val id: Int?,
     @JsonProperty("dateCre") @JsonFormat(pattern = "dd/MM/yyyy") val dateCre: Date?,
     @JsonProperty("dateMod") @JsonFormat(pattern = "dd/MM/yyyy") val dateMod: Date?,
     @JsonProperty("name") val name: String,

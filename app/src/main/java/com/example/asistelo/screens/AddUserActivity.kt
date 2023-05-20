@@ -5,7 +5,9 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.asistelo.R
 import com.example.asistelo.controllers.UserController
+import com.example.asistelo.controllers.dto.ClassDto
 import com.example.asistelo.controllers.dto.RolDto
+import com.example.asistelo.controllers.dto.SubjectDto
 import com.example.asistelo.controllers.dto.UserDto
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
@@ -69,6 +71,9 @@ class AddUserActivity : AppCompatActivity() {
         )
         val actualDate = Date()
 
+        val classes: List<ClassDto> = listOf()
+        val subjects: List<SubjectDto> = listOf()
+
         addUserButton.setOnClickListener {
             val user = UserDto(
                 null,
@@ -83,8 +88,8 @@ class AddUserActivity : AppCompatActivity() {
                 null,
                 rol,
                 null,
-                null,
-                null
+                subjects,
+                classes
             )
 
             GlobalScope.launch(Dispatchers.IO) {

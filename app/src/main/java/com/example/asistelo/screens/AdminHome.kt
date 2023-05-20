@@ -25,11 +25,27 @@ class AdminHome : AppCompatActivity() {
 
         val addUserButton = findViewById<Button>(R.id.addUserActivityButton)
 
+        val addClassButton = findViewById<Button>(R.id.addClassActivityButton)
+
+        val addSubjectButton = findViewById<Button>(R.id.addSubjectActivityButton)
+
         addUserButton.setOnClickListener {
             val addUserActivityIntent = Intent(this@AdminHome, AddUserActivity::class.java)
             addUserActivityIntent.putExtra("admin", admin)
             startActivity(addUserActivityIntent)
         }
+
+        addClassButton.setOnClickListener {
+            val addUserActivityIntent = Intent(this@AdminHome, AddClassActivity::class.java)
+            addUserActivityIntent.putExtra("admin", admin)
+            startActivity(addUserActivityIntent)
+        }
+
+//        addSubjectButton.setOnClickListener {
+//            val addSubjectActivityIntent = Intent(this@AdminHome, AddSubjectActivity::class.java)
+//            addSubjectActivityIntent.putExtra("admin", admin)
+//            startActivity(addSubjectActivityIntent)
+//        }
     }
 
 
