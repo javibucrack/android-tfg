@@ -19,11 +19,13 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.jackson.JacksonConverterFactory
+import java.text.SimpleDateFormat
+import java.time.Instant
 import java.util.*
 
 class AddAbsenceScreen : AppCompatActivity() {
     @OptIn(DelicateCoroutinesApi::class)
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n", "SimpleDateFormat")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_absence_screen)
@@ -52,33 +54,28 @@ class AddAbsenceScreen : AppCompatActivity() {
         val showSubjectName = findViewById<TextView>(R.id.showSubjectNameInAddAbsenceScreen)
         showSubjectName.text = subject.name
 
-        val showCalendarTextView = findViewById<TextView>(R.id.showCalendarTextView)
-
         val calendar = findViewById<CalendarView>(R.id.selectDateAbsence)
 
         val numHoursText = findViewById<EditText>(R.id.selectNumHoursAbsence)
 
 
-        showCalendarTextView.setOnClickListener {
-            calendar.visibility = View.VISIBLE
-        }
-
+        var selectedDate = Date()
         calendar.setOnDateChangeListener { view, year, month, dayOfMonth ->
-            val selectedDate = "$dayOfMonth/${month + 1}/$year" // Formato de fecha personalizado
-            showCalendarTextView.text = selectedDate
-            calendar.visibility = View.GONE // Oculta el calendario después de seleccionar una fecha
+            val date = Calendar.getInstance()
+            date.set(year, month, dayOfMonth)
+            selectedDate = date.time
         }
 
-        val date = Date(calendar.date)
 
         val addAbsenceButton = findViewById<Button>(R.id.addAbsenceButton)
 
         addAbsenceButton.setOnClickListener {
+
             val numHours = numHoursText.text.toString().toInt()
             val absence = AbsenceDto(
                 null,
                 numHours,
-                date,
+                selectedDate,
                 null,
                 null,
                 null,
@@ -86,7 +83,6 @@ class AddAbsenceScreen : AppCompatActivity() {
                 null
             )
             GlobalScope.launch(Dispatchers.IO) {
-//                absenceController.newAbsence(absence, subject.id, student.id, teacher.id).execute()
                 val action =
                     absenceController.newAbsence(absence, subject.id!!, student.id!!, teacher.id!!)
                 action.enqueue(object : Callback<Void> {
