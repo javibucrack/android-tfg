@@ -88,7 +88,7 @@ class AddAbsenceScreen : AppCompatActivity() {
             GlobalScope.launch(Dispatchers.IO) {
 //                absenceController.newAbsence(absence, subject.id, student.id, teacher.id).execute()
                 val action =
-                    absenceController.newAbsence(absence, subject.id, student.id!!, teacher.id!!)
+                    absenceController.newAbsence(absence, subject.id!!, student.id!!, teacher.id!!)
                 action.enqueue(object : Callback<Void> {
                     override fun onResponse(call: Call<Void>, response: Response<Void>) {
                         when (response.code()) {

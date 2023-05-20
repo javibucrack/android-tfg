@@ -41,11 +41,11 @@ class AdminHome : AppCompatActivity() {
             startActivity(addUserActivityIntent)
         }
 
-//        addSubjectButton.setOnClickListener {
-//            val addSubjectActivityIntent = Intent(this@AdminHome, AddSubjectActivity::class.java)
-//            addSubjectActivityIntent.putExtra("admin", admin)
-//            startActivity(addSubjectActivityIntent)
-//        }
+        addSubjectButton.setOnClickListener {
+            val addSubjectActivityIntent = Intent(this@AdminHome, AddSubjectActivity::class.java)
+            addSubjectActivityIntent.putExtra("admin", admin)
+            startActivity(addSubjectActivityIntent)
+        }
     }
 
 

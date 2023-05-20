@@ -7,7 +7,7 @@ import java.util.*
 
 data class SubjectDto(
 
-    @JsonProperty("id") val id: Int,
+    @JsonProperty("id") val id: Int?,
     @JsonProperty("totalHours") val totalHours: Int?,
     @JsonProperty("dateCre") @JsonFormat(pattern = "dd/MM/yyyy") val dateCre: Date?,
     @JsonProperty("dateMod") @JsonFormat(pattern = "dd/MM/yyyy") val dateMod: Date?,
