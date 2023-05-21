@@ -1,6 +1,5 @@
 package com.example.asistelo.controllers
 
-import com.example.asistelo.controllers.dto.AbsenceDto
 import com.example.asistelo.controllers.dto.UserDto
 import retrofit2.Call
 import retrofit2.http.*
@@ -8,13 +7,13 @@ import retrofit2.http.*
 interface UserController {
 
     @GET("/user/{email}/{pass}")
-    fun getUser(
+    fun login(
         @Path("email") email: String,
         @Path("pass") pass: String
     ): Call<UserDto>
 
     @GET("/user/{idUser}")
-    fun getStudent(
+    fun getUser(
         @Path("idUser") idUser: Int
     ): Call<UserDto>
 
@@ -28,4 +27,11 @@ interface UserController {
         @Body user: UserDto,
         @Path("idUserCre") idUserCre: Int
     ): Call<Void>
+
+    @GET("/users/{role}/{classId}/{subjectId}")
+    fun getAllStudents(
+        @Path("role") role: String,
+        @Path("classId") classId: Int,
+        @Path("subjectId") subjectId: Int
+    ): Call<List<UserDto>>
 }

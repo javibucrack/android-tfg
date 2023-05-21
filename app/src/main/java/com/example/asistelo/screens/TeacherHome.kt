@@ -11,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.asistelo.R
 import com.example.asistelo.controllers.ClassController
+import com.example.asistelo.controllers.UserController
 import com.example.asistelo.controllers.dto.ClassDto
 import com.example.asistelo.controllers.dto.UserDto
 import retrofit2.*
@@ -28,6 +29,8 @@ class TeacherHome : AppCompatActivity() {
 
         val teacherController = retrofit.create(ClassController::class.java)
 
+        val userController = retrofit.create(UserController::class.java)
+
         val teacher = intent.getSerializableExtra("teacher") as UserDto
 
         val teacherNameTextView = findViewById<TextView>(R.id.teacherNameTextView)
@@ -35,6 +38,8 @@ class TeacherHome : AppCompatActivity() {
 
 
         val showClassesButton = findViewById<Button>(R.id.addAbsenceButtonActivity)
+
+        val addAbsencesButtonActivity = findViewById<Button>(R.id.addAbsencesActivityButton)
 
         showClassesButton.setOnClickListener {
 
@@ -79,6 +84,48 @@ class TeacherHome : AppCompatActivity() {
                 }
 
                 override fun onFailure(call: Call<List<ClassDto>>, t: Throwable) {
+                    Toast.makeText(
+                        this@TeacherHome,
+                        "${t.message}",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+
+
+            })
+        }
+
+        addAbsencesButtonActivity.setOnClickListener {
+            val user = userController.getUser(teacher.id!!)
+
+            user.enqueue(object : Callback<UserDto> {
+                override fun onResponse(
+                    call: Call<UserDto>,
+                    response: Response<UserDto>
+                ) {
+                    when (response.code()) {
+                        200 -> {
+                            val addAbsencesActivity =
+                                Intent(this@TeacherHome, AddAbsencesActivity::class.java)
+                            addAbsencesActivity.putExtra(
+                                "teacher",
+                                response.body()
+                            )
+                            startActivity(addAbsencesActivity)
+                        }
+                        404 -> {
+                            Log.e("login", "Código de respuesta desconocido ${response.code()}")
+                            Toast.makeText(
+                                this@TeacherHome,
+                                " ${response.body()}",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                    }
+
+                }
+
+                override fun onFailure(call: Call<UserDto>, t: Throwable) {
                     Toast.makeText(
                         this@TeacherHome,
                         "${t.message}",

@@ -44,7 +44,7 @@ class StudentHome : AppCompatActivity() {
 
         showSubjectButton.setOnClickListener {
 
-            val user = studentController.getStudent(student.id!!)
+            val user = studentController.getUser(student.id!!)
 
             user.enqueue(object : Callback<UserDto> {
                 override fun onResponse(call: Call<UserDto>, response: Response<UserDto>) {
@@ -56,7 +56,7 @@ class StudentHome : AppCompatActivity() {
 
                             if (subjectList != null) {
                                 for (subject in subjectList) {
-                                    subjects.add(subject.name)
+                                    subjects.add(subject.name!!)
                                 }
                             }
                             val showSubjectsIntent =

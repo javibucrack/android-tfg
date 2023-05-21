@@ -11,7 +11,7 @@ data class SubjectDto(
     @JsonProperty("totalHours") val totalHours: Int?,
     @JsonProperty("dateCre") @JsonFormat(pattern = "dd/MM/yyyy") val dateCre: Date?,
     @JsonProperty("dateMod") @JsonFormat(pattern = "dd/MM/yyyy") val dateMod: Date?,
-    @JsonProperty("name") val name: String,
+    @JsonProperty("name") val name: String?,
     @JsonProperty("userCre") val userCre: UserDto?,
     @JsonProperty("userMod") val userMod: UserDto?,
     @JsonProperty("student") val student: List<UserDto>?,

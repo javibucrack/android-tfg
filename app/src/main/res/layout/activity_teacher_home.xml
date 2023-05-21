@@ -67,4 +67,14 @@
         app:layout_constraintStart_toStartOf="@+id/guideline8"
         app:layout_constraintTop_toBottomOf="@+id/teacherNameTextView" />
 
+    <Button
+        android:id="@+id/addAbsencesActivityButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="PASAR LISTA"
+        app:layout_constraintEnd_toStartOf="@+id/guideline9"
+        app:layout_constraintStart_toStartOf="@+id/guideline8"
+        app:layout_constraintTop_toBottomOf="@+id/addAbsenceButtonActivity" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
