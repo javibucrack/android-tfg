@@ -43,6 +43,8 @@ class AddUserActivity : AppCompatActivity() {
 
         val secondSurname = findViewById<EditText>(R.id.insertSecondSurnameEditText)
 
+        val email = findViewById<EditText>(R.id.insertEmailEditText)
+
         val roles = arrayOf("Estudiante", "Profesor", "Administrador")
 
         val rolSpinner = findViewById<Spinner>(R.id.selectRolSpinner)
@@ -79,7 +81,7 @@ class AddUserActivity : AppCompatActivity() {
                 null,
                 actualDate,
                 null,
-                null,//Se añadirá un email automático, que se controla desde el backend en java
+                email.text.toString(),
                 firstSurname.text.toString(),
                 name.text.toString(),
                 null,//Se añadirá una contraseña automática, que se controla desde el backend en java
