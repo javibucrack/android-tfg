@@ -34,4 +34,9 @@ interface UserController {
         @Path("classId") classId: Int,
         @Path("subjectId") subjectId: Int
     ): Call<List<UserDto>>
+
+    @PUT("/user/newPass")
+    fun changePass(
+        @Body user: UserDto
+    ): Call<Void>
 }

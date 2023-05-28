@@ -13,7 +13,7 @@ data class UserDto(
     @JsonProperty("email") val email: String?,
     @JsonProperty("firstSurname") val firstSurname: String,
     @JsonProperty("name") val name: String,
-    @JsonProperty("pass") val pass: String?,
+    @JsonProperty("pass") var pass: String?,
     @JsonProperty("secondSurname") val secondSurname: String?,
     @JsonProperty("userCre") val userCre: Int?,
     @JsonProperty("userMod") val userMod: Int?,

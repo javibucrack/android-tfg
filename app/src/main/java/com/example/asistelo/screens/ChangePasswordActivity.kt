@@ -6,13 +6,31 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.example.asistelo.R
+import com.example.asistelo.controllers.UserController
 import com.example.asistelo.controllers.dto.UserDto
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.jackson.JacksonConverterFactory
 
 class ChangePasswordActivity : AppCompatActivity() {
+    @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_change_password)
         val user = intent.getSerializableExtra("user") as UserDto
+
+        val retrofit = Retrofit.Builder()
+            .baseUrl("http://10.0.2.2:8080")
+            .addConverterFactory(JacksonConverterFactory.create())
+            .build()
+
+        val userController = retrofit.create(UserController::class.java)
 
         val actualPassword = findViewById<EditText>(R.id.actualPasswordEditText)
 
@@ -23,21 +41,44 @@ class ChangePasswordActivity : AppCompatActivity() {
         val changePassword = findViewById<Button>(R.id.changePasswordButton)
 
         changePassword.setOnClickListener {
-            if (!user.pass!!.equals(actualPassword)) {
+            if (user.pass!! != actualPassword.text.toString()) {
                 Toast.makeText(
                     this@ChangePasswordActivity,
                     "La contraseña actual no es correcta",
                     Toast.LENGTH_LONG
                 ).show()
             } else {
-                if (!newPasswordFirstTry.equals(newPasswordSecondTry)) {
+                if (newPasswordFirstTry.text.toString() != newPasswordSecondTry.text.toString()) {
                     Toast.makeText(
                         this@ChangePasswordActivity,
                         "Las contraseñas no coinciden",
                         Toast.LENGTH_LONG
                     ).show()
                 } else {
-                    //TODO: añadir endpoint que cambia la contraseña
+                    user.pass = newPasswordSecondTry.text.toString()
+                    GlobalScope.launch(Dispatchers.IO) {
+                        val changePassword =
+                            userController.changePass(user)
+                        changePassword.enqueue(object : Callback<Void> {
+                            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                                Toast.makeText(
+                                    this@ChangePasswordActivity,
+                                    "Contraseña cambiada correctamente",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                                finish()
+                                //TODO: añadir endpoint que cambia la contraseña
+                            }
+
+                            override fun onFailure(call: Call<Void>, t: Throwable) {
+                                Toast.makeText(
+                                    this@ChangePasswordActivity,
+                                    "${t.message}",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                            }
+                        })
+                    }
                 }
             }
         }
