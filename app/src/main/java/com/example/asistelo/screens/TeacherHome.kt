@@ -41,6 +41,8 @@ class TeacherHome : AppCompatActivity() {
 
         val addAbsencesButtonActivity = findViewById<Button>(R.id.addAbsencesActivityButton)
 
+        val viewAndDeleteAbsencesButton = findViewById<Button>(R.id.viewAndDeleteAbsencesButton)
+
         showClassesButton.setOnClickListener {
 
             val user = teacherController.getClasses(teacher.id!!)
@@ -112,6 +114,48 @@ class TeacherHome : AppCompatActivity() {
                                 response.body()
                             )
                             startActivity(addAbsencesActivity)
+                        }
+                        404 -> {
+                            Log.e("login", "Código de respuesta desconocido ${response.code()}")
+                            Toast.makeText(
+                                this@TeacherHome,
+                                " ${response.body()}",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                    }
+
+                }
+
+                override fun onFailure(call: Call<UserDto>, t: Throwable) {
+                    Toast.makeText(
+                        this@TeacherHome,
+                        "${t.message}",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+
+
+            })
+        }
+
+        viewAndDeleteAbsencesButton.setOnClickListener {
+            val user = userController.getUser(teacher.id!!)
+
+            user.enqueue(object : Callback<UserDto> {
+                override fun onResponse(
+                    call: Call<UserDto>,
+                    response: Response<UserDto>
+                ) {
+                    when (response.code()) {
+                        200 -> {
+                            val selectSubjectAbsencesActivity =
+                                Intent(this@TeacherHome, SelectSubjectAbsencesActivity::class.java)
+                            selectSubjectAbsencesActivity.putExtra(
+                                "teacher",
+                                response.body()
+                            )
+                            startActivity(selectSubjectAbsencesActivity)
                         }
                         404 -> {
                             Log.e("login", "Código de respuesta desconocido ${response.code()}")

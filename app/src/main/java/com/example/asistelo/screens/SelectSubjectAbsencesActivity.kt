@@ -1,0 +1,120 @@
+package com.example.asistelo.screens
+
+import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.widget.AdapterView
+import android.widget.Button
+import android.widget.Spinner
+import android.widget.Toast
+import com.example.asistelo.R
+import com.example.asistelo.adapter.SubjectForAbsenceListAdapter
+import com.example.asistelo.controllers.AbsenceController
+import com.example.asistelo.controllers.dto.AbsenceDto
+import com.example.asistelo.controllers.dto.SubjectDto
+import com.example.asistelo.controllers.dto.UserDto
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.jackson.JacksonConverterFactory
+
+class SelectSubjectAbsencesActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_select_subject_absences)
+
+        val retrofit = Retrofit.Builder()
+            .baseUrl("http://10.0.2.2:8080")
+            .addConverterFactory(JacksonConverterFactory.create())
+            .build()
+
+        val absenceController = retrofit.create(AbsenceController::class.java)
+
+        val teacher = intent.getSerializableExtra("teacher") as UserDto
+
+        val subjectList = teacher.subjectList!!.toMutableList()
+
+        val searchAbsencesBySubjectButton = findViewById<Button>(R.id.searchAbsencesBySubjectButton)
+
+        val selectSubjectSpinner = findViewById<Spinner>(R.id.selectSubjectForAbsencesSpinner)
+        val subjectAdapter =
+            SubjectForAbsenceListAdapter(this, android.R.layout.simple_spinner_item, subjectList)
+        subjectAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        selectSubjectSpinner.adapter = subjectAdapter
+        var selectedSubject =
+            SubjectDto(null, null, null, null, null, null, null, null, null, null, null, null)
+
+        selectSubjectSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                selectedSubject = subjectList[position]
+                // Realiza alguna acción con la asignatura seleccionada
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                // No se seleccionó nada en el spinner
+            }
+        }
+        searchAbsencesBySubjectButton.setOnClickListener {
+
+            val absenceList = absenceController.getAbsences(teacher.id!!, selectedSubject.id!!)
+
+
+            absenceList.enqueue(object : Callback<List<AbsenceDto>> {
+                override fun onResponse(
+                    call: Call<List<AbsenceDto>>,
+                    response: Response<List<AbsenceDto>>
+                ) {
+                    when (response.code()) {
+                        200 -> {
+
+                            val absences = mutableListOf<AbsenceDto>()
+
+                            val absenceListSize = response.body()!!.size
+                            for (absence in 0 until absenceListSize) {
+                                absences.add(response.body()!![absence])
+                            }
+                            val viewAbsencesBySubjectActivity =
+                                Intent(
+                                    this@SelectSubjectAbsencesActivity,
+                                    ViewAbsencesOfSubjectActivity::class.java
+                                )
+                            viewAbsencesBySubjectActivity.putExtra(
+                                "absences",
+                                ArrayList(absences)
+                            )
+                            startActivity(viewAbsencesBySubjectActivity)
+                        }
+                        404 -> {
+                            Log.e("login", "Código de respuesta desconocido ${response.code()}")
+                            Toast.makeText(
+                                this@SelectSubjectAbsencesActivity,
+                                " ${response.body()}",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                    }
+
+                }
+
+                override fun onFailure(call: Call<List<AbsenceDto>>, t: Throwable) {
+                    Toast.makeText(
+                        this@SelectSubjectAbsencesActivity,
+                        "${t.message}",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+
+
+            })
+        }
+
+    }
+}
