@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView46"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:background="#000000"
+        android:text="--------------------------------------------------------------------"
+        android:textColor="#757575"
+        app:layout_constraintBottom_toTopOf="@+id/guideline80"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <CheckBox
+        android:id="@+id/deleteAbsenceCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        android:text="QUITAR"
+        app:layout_constraintBottom_toBottomOf="@+id/showAbsenceDateInAbsencesOfSubject"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline79"
+        app:layout_constraintTop_toTopOf="@+id/showStudentNameInAbsencesOfSubject" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline78"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="50dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline79"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="100dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline80"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <TextView
+        android:id="@+id/textView40"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Nombre:"
+        android:textColor="#000000"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="@+id/guideline78"
+        app:layout_constraintTop_toTopOf="@+id/guideline80" />
+
+    <TextView
+        android:id="@+id/textView41"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Apellidos:"
+        android:textColor="#000000"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="@+id/guideline78"
+        app:layout_constraintTop_toBottomOf="@+id/textView40" />
+
+    <TextView
+        android:id="@+id/textView42"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Fecha:"
+        android:textColor="#000000"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="@+id/guideline78"
+        app:layout_constraintTop_toBottomOf="@+id/textView41" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline81"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="126dp" />
+
+    <TextView
+        android:id="@+id/showStudentNameInAbsencesOfSubject"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/textView40"
+        app:layout_constraintEnd_toStartOf="@+id/guideline79"
+        app:layout_constraintStart_toStartOf="@+id/guideline81"
+        app:layout_constraintTop_toTopOf="@+id/textView40" />
+
+    <TextView
+        android:id="@+id/showStudentSurnameInAbsencesOfSubject"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/textView41"
+        app:layout_constraintEnd_toStartOf="@+id/guideline79"
+        app:layout_constraintStart_toStartOf="@+id/guideline81"
+        app:layout_constraintTop_toTopOf="@+id/textView41" />
+
+    <TextView
+        android:id="@+id/showAbsenceDateInAbsencesOfSubject"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/textView42"
+        app:layout_constraintEnd_toStartOf="@+id/guideline79"
+        app:layout_constraintStart_toStartOf="@+id/guideline81"
+        app:layout_constraintTop_toTopOf="@+id/textView42" />
+</androidx.constraintlayout.widget.ConstraintLayout>
