@@ -4,6 +4,6 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import java.io.Serializable
 
 data class RolDto(
-    @JsonProperty("id") val id: Int,
-    @JsonProperty("name") val name: String?
+    @JsonProperty("id") var id: Int?,
+    @JsonProperty("name") var name: String?
 ) : Serializable

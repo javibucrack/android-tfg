@@ -1,6 +1,7 @@
 package com.example.asistelo.screens
 
 import android.os.Bundle
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.asistelo.R
@@ -46,31 +47,43 @@ class AddUserActivity : AppCompatActivity() {
         val email = findViewById<EditText>(R.id.insertEmailEditText)
 
         val roles = arrayOf("Estudiante", "Profesor", "Administrador")
-
+        
         val rolSpinner = findViewById<Spinner>(R.id.selectRolSpinner)
+
+        val selectedRol = RolDto(null, null)
+
 
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, roles)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         rolSpinner.adapter = adapter
 
-        var role: Int = 0
+        rolSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                selectedRol.name = roles[position]
+                when (selectedRol.name) {
+                    "Estudiante" -> {
+                        selectedRol.id = 1
+                    }
+                    "Profesor" -> {
+                        selectedRol.id = 2
 
-        val selectedRol = rolSpinner.selectedItem.toString()
-        when (selectedRol) {
-            "Estudiante" -> {
-                role = 1
+                    }
+                    "Administrador" -> {
+                        selectedRol.id = 3
+
+                    }
+                }
             }
-            "Profesor" -> {
-                role = 2
-            }
-            "Administrador" -> {
-                role = 3
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                // No se seleccionó nada en el spinner
             }
         }
-        val rol = RolDto(
-            role,
-            null
-        )
         val actualDate = Date()
 
         val classes: List<ClassDto> = listOf()
@@ -88,7 +101,7 @@ class AddUserActivity : AppCompatActivity() {
                 secondSurname.text.toString(),
                 admin.id,
                 null,
-                rol,
+                selectedRol,
                 null,
                 subjects,
                 classes
