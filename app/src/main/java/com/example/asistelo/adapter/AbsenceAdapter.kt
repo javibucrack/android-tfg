@@ -8,6 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.asistelo.R
 import com.example.asistelo.controllers.dto.AbsenceDto
+import java.text.SimpleDateFormat
+import java.util.*
 
 class AbsenceAdapter(val absences: List<AbsenceDto>, val context: Context) :
     RecyclerView.Adapter<AbsenceAdapter.ItemViewHolder>() {
@@ -20,7 +22,9 @@ class AbsenceAdapter(val absences: List<AbsenceDto>, val context: Context) :
                 itemView.findViewById<TextView>(R.id.showSubjectTextViewInAbsences)
             subjectNameTextView.text = absence.subject!!.name
             val dateTextView = itemView.findViewById<TextView>(R.id.showDateInAbsences)
-            dateTextView.text = absence.date.toString()
+            val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+            val formattedDate = dateFormat.format(absence.date!!)
+            dateTextView.text = formattedDate
             val numHoursTextView = itemView.findViewById<TextView>(R.id.showNumHoursInAbsences)
             numHoursTextView.text = absence.numHours.toString()
         }

@@ -1,5 +1,6 @@
 package com.example.asistelo.screens
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,6 +13,7 @@ import com.example.asistelo.R
 import com.example.asistelo.controllers.dto.UserDto
 
 class AdminHome : AppCompatActivity() {
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin_home)
@@ -19,9 +21,13 @@ class AdminHome : AppCompatActivity() {
 
         val admin = intent.getSerializableExtra("admin") as UserDto
 
-        val adminName = findViewById<TextView>(R.id.adminNameTextView)
-
-        adminName.text = admin.name
+        val adminNameTextView = findViewById<TextView>(R.id.adminNameTextView)
+        if (admin.secondSurname == null) {
+            adminNameTextView.text = admin.name + " " + admin.firstSurname
+        } else {
+            adminNameTextView.text =
+                admin.name + " " + admin.firstSurname + " " + admin.secondSurname
+        }
 
         val addUserButton = findViewById<Button>(R.id.addUserActivityButton)
 
@@ -50,7 +56,7 @@ class AdminHome : AppCompatActivity() {
 
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_select_role, menu)
+        menuInflater.inflate(R.menu.menu_logout, menu)
         return true
     }
 

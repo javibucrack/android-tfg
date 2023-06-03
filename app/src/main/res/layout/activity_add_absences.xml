@@ -31,8 +31,10 @@
         android:id="@+id/textView29"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
         android:text="Seleccionar clase"
         android:textColor="#000000"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/guideline59"
         app:layout_constraintTop_toTopOf="@+id/guideline61" />
 
@@ -40,8 +42,10 @@
         android:id="@+id/textView30"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
         android:text="Seleccionar asignatura"
         android:textColor="#000000"
+        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline60"
         app:layout_constraintTop_toTopOf="@+id/guideline61" />
 
@@ -69,11 +73,15 @@
 
     <Button
         android:id="@+id/searchStudentsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
+        android:layout_width="145dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="400dp"
+        android:backgroundTint="#000000"
+        android:fontFamily="sans-serif-black"
         android:text="BUSCAR"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline60"
-        app:layout_constraintStart_toStartOf="@+id/guideline59" />
+        app:layout_constraintStart_toStartOf="@+id/guideline59"
+        app:layout_constraintTop_toBottomOf="@+id/selectSubjectSpinner" />
 </androidx.constraintlayout.widget.ConstraintLayout>

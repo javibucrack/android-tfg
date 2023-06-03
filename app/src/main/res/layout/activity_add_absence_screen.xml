@@ -25,13 +25,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="25dp" />
+        app:layout_constraintGuide_begin="20dp" />
 
     <TextView
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PONIENDO FALTA A:"
+        android:fontFamily="sans-serif-medium"
+        android:text="PONIENDO FALTA A"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/guideline41"
@@ -42,6 +43,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
+        android:textColor="#000000"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView12"
         app:layout_constraintEnd_toStartOf="@+id/guideline42"
         app:layout_constraintStart_toEndOf="@+id/textView12"
@@ -52,7 +55,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="EN LA ASIGNATURA:"
+        android:fontFamily="sans-serif-medium"
+        android:text="EN LA ASIGNATURA"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/guideline41"
@@ -63,6 +67,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
+        android:textColor="#000000"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView15"
         app:layout_constraintEnd_toStartOf="@+id/guideline42"
         app:layout_constraintStart_toEndOf="@+id/textView15"
@@ -73,7 +79,8 @@
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="sans-serif-medium"
         android:text="NUMERO DE HORAS"
         android:textColor="#000000"
         android:textSize="20sp"
@@ -86,6 +93,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif-medium"
         android:text="FECHA"
         android:textColor="#000000"
         android:textSize="20sp"
@@ -101,25 +109,31 @@
         android:ems="10"
         android:inputType="number"
         android:minHeight="48dp"
+        android:textColor="#000000"
         app:layout_constraintEnd_toStartOf="@+id/guideline42"
         app:layout_constraintStart_toStartOf="@+id/guideline41"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+        app:layout_constraintTop_toBottomOf="@+id/textView14"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <CalendarView
         android:id="@+id/selectDateAbsence"
         android:layout_width="313dp"
         android:layout_height="330dp"
         android:layout_marginTop="1dp"
+        android:weekDayTextAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintEnd_toStartOf="@+id/guideline42"
         app:layout_constraintStart_toStartOf="@+id/guideline41"
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
     <Button
         android:id="@+id/addAbsenceButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="145dp"
+        android:layout_height="60dp"
         android:layout_marginTop="10dp"
+        android:backgroundTint="#000000"
+        android:fontFamily="sans-serif-black"
         android:text="PONER FALTA"
+        android:textSize="15sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline42"
         app:layout_constraintStart_toStartOf="@+id/guideline41"
         app:layout_constraintTop_toBottomOf="@+id/selectDateAbsence" />

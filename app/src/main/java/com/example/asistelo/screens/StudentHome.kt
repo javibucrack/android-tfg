@@ -1,5 +1,6 @@
 package com.example.asistelo.screens
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -22,6 +23,7 @@ import retrofit2.converter.jackson.JacksonConverterFactory
 class StudentHome : AppCompatActivity() {
 
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student_home)
@@ -37,7 +39,12 @@ class StudentHome : AppCompatActivity() {
         val student = intent.getSerializableExtra("student") as UserDto
 
         val studentNameTextView = findViewById<TextView>(R.id.studentNameTextView)
-        studentNameTextView.text = student.name
+        if (student.secondSurname == null) {
+            studentNameTextView.text = student.name + " " + student.firstSurname
+        } else {
+            studentNameTextView.text =
+                student.name + " " + student.firstSurname + " " + student.secondSurname
+        }
 
         val showSubjectButton = findViewById<Button>(R.id.viewSubjectsButton)
 
@@ -156,7 +163,7 @@ class StudentHome : AppCompatActivity() {
 
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_select_role, menu)
+        menuInflater.inflate(R.menu.menu_logout, menu)
         return true
     }
 

@@ -47,7 +47,7 @@ class AddUserActivity : AppCompatActivity() {
         val email = findViewById<EditText>(R.id.insertEmailEditText)
 
         val roles = arrayOf("Estudiante", "Profesor", "Administrador")
-        
+
         val rolSpinner = findViewById<Spinner>(R.id.selectRolSpinner)
 
         val selectedRol = RolDto(null, null)

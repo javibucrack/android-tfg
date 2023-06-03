@@ -62,7 +62,6 @@ class MainActivity : AppCompatActivity() {
                                     adminIntent.putExtra("admin", user)
                                     startActivity(adminIntent)
                                     finish()
-                                    //TODO: añadir las funciones que tiene un administrador
                                 }
                             }
                         }

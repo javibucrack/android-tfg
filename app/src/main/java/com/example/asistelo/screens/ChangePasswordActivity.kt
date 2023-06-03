@@ -67,7 +67,6 @@ class ChangePasswordActivity : AppCompatActivity() {
                                     Toast.LENGTH_LONG
                                 ).show()
                                 finish()
-                                //TODO: añadir endpoint que cambia la contraseña
                             }
 
                             override fun onFailure(call: Call<Void>, t: Throwable) {

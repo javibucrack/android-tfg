@@ -113,8 +113,6 @@ class ViewAbsencesOfSubjectActivity : AppCompatActivity() {
                         })
                     }
                 }
-
-                //TODO: si está marcado el checkbox de borrar, recorrer el endpoint de delete y borrarlo
             }
         }
     }
