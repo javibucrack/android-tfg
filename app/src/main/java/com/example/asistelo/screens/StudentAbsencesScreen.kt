@@ -1,9 +1,9 @@
 package com.example.asistelo.screens
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.asistelo.R
@@ -23,11 +23,11 @@ class StudentAbsencesScreen : AppCompatActivity() {
         val nameTextView = findViewById<TextView>(R.id.showUserNameInAbsences)
         nameTextView.text = student.name + " " + student.firstSurname + " " + student.secondSurname
 
-        val absencesList=intent.getSerializableExtra("absences") as List<AbsenceDto>
+        val absencesList = intent.getSerializableExtra("absences") as List<AbsenceDto>
 
-        val absencesRecyclerView=findViewById<RecyclerView>(R.id.absencesRecyclerView)
+        val absencesRecyclerView = findViewById<RecyclerView>(R.id.absencesRecyclerView)
 
-        val absenceAdapter=AbsenceAdapter(absencesList,applicationContext)
+        val absenceAdapter = AbsenceAdapter(absencesList, applicationContext)
 
         absencesRecyclerView.layoutManager =
             GridLayoutManager(this, 1, RecyclerView.VERTICAL, false)

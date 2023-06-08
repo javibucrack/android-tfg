@@ -9,13 +9,11 @@ import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.asistelo.R
-import com.example.asistelo.controllers.AbsenceController
 import com.example.asistelo.controllers.dto.UserDto
 
 class StudentListForAbsencesAdapter(
     val students: List<UserDto>,
-    val context: Context,
-    val absenceController: AbsenceController
+    val context: Context
 ) :
     RecyclerView.Adapter<StudentListForAbsencesAdapter.ItemViewHolder>() {
 

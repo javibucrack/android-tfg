@@ -7,7 +7,11 @@ import android.widget.ArrayAdapter
 import android.widget.TextView
 import com.example.asistelo.controllers.dto.ClassDto
 
-class ClassForAbsencesAdapter(context: Context, resource: Int, private val classList: List<ClassDto>) :
+class ClassForAbsencesAdapter(
+    context: Context,
+    resource: Int,
+    private val classList: List<ClassDto>
+) :
     ArrayAdapter<ClassDto>(context, resource, classList) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {

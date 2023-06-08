@@ -1,7 +1,6 @@
 package com.example.asistelo.controllers
 
 import com.example.asistelo.controllers.dto.ClassDto
-import com.example.asistelo.controllers.dto.UserDto
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET

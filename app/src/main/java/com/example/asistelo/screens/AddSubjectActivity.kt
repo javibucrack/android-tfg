@@ -1,11 +1,12 @@
 package com.example.asistelo.screens
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.asistelo.R
+import com.example.asistelo.config.RetrofitClient
 import com.example.asistelo.controllers.SubjectController
 import com.example.asistelo.controllers.dto.SubjectDto
 import com.example.asistelo.controllers.dto.UserDto
@@ -16,8 +17,6 @@ import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.jackson.JacksonConverterFactory
 import java.util.*
 
 class AddSubjectActivity : AppCompatActivity() {
@@ -26,12 +25,7 @@ class AddSubjectActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_subject)
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:8080")
-            .addConverterFactory(JacksonConverterFactory.create())
-            .build()
-
-        val subjectController = retrofit.create(SubjectController::class.java)
+        val subjectController = RetrofitClient.retrofit.create(SubjectController::class.java)
 
         val admin = intent.getSerializableExtra("admin") as UserDto
 

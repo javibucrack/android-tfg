@@ -1,11 +1,12 @@
 package com.example.asistelo.screens
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.asistelo.R
+import com.example.asistelo.config.RetrofitClient
 import com.example.asistelo.controllers.UserController
 import com.example.asistelo.controllers.dto.UserDto
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -15,8 +16,6 @@ import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.jackson.JacksonConverterFactory
 
 class ChangePasswordActivity : AppCompatActivity() {
     @OptIn(DelicateCoroutinesApi::class)
@@ -25,12 +24,7 @@ class ChangePasswordActivity : AppCompatActivity() {
         setContentView(R.layout.activity_change_password)
         val user = intent.getSerializableExtra("user") as UserDto
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:8080")
-            .addConverterFactory(JacksonConverterFactory.create())
-            .build()
-
-        val userController = retrofit.create(UserController::class.java)
+        val userController = RetrofitClient.retrofit.create(UserController::class.java)
 
         val actualPassword = findViewById<EditText>(R.id.actualPasswordEditText)
 

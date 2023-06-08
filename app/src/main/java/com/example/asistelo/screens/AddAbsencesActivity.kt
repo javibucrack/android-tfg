@@ -1,14 +1,18 @@
 package com.example.asistelo.screens
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.*
+import android.widget.AdapterView
+import android.widget.Button
+import android.widget.Spinner
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.asistelo.R
 import com.example.asistelo.adapter.ClassForAbsencesAdapter
 import com.example.asistelo.adapter.SubjectForAbsenceListAdapter
+import com.example.asistelo.config.RetrofitClient
 import com.example.asistelo.controllers.UserController
 import com.example.asistelo.controllers.dto.ClassDto
 import com.example.asistelo.controllers.dto.SubjectDto
@@ -16,21 +20,13 @@ import com.example.asistelo.controllers.dto.UserDto
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.jackson.JacksonConverterFactory
 
 class AddAbsencesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_absences)
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:8080")
-            .addConverterFactory(JacksonConverterFactory.create())
-            .build()
-
-
-        val userController = retrofit.create(UserController::class.java)
+        val userController = RetrofitClient.retrofit.create(UserController::class.java)
 
         val teacher = intent.getSerializableExtra("teacher") as UserDto
 

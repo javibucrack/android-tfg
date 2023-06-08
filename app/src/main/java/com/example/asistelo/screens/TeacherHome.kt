@@ -2,7 +2,6 @@ package com.example.asistelo.screens
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -10,13 +9,14 @@ import android.view.MenuItem
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.asistelo.R
+import com.example.asistelo.config.RetrofitClient
 import com.example.asistelo.controllers.ClassController
 import com.example.asistelo.controllers.UserController
 import com.example.asistelo.controllers.dto.ClassDto
 import com.example.asistelo.controllers.dto.UserDto
 import retrofit2.*
-import retrofit2.converter.jackson.JacksonConverterFactory
 
 class TeacherHome : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
@@ -24,14 +24,9 @@ class TeacherHome : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_teacher_home)
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:8080")
-            .addConverterFactory(JacksonConverterFactory.create())
-            .build()
+        val classController = RetrofitClient.retrofit.create(ClassController::class.java)
 
-        val teacherController = retrofit.create(ClassController::class.java)
-
-        val userController = retrofit.create(UserController::class.java)
+        val userController = RetrofitClient.retrofit.create(UserController::class.java)
 
         val teacher = intent.getSerializableExtra("teacher") as UserDto
 
@@ -52,7 +47,7 @@ class TeacherHome : AppCompatActivity() {
 
         showClassesButton.setOnClickListener {
 
-            val user = teacherController.getClasses(teacher.id!!)
+            val user = classController.getClasses(teacher.id!!)
 
             user.enqueue(object : Callback<List<ClassDto>> {
                 override fun onResponse(

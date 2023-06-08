@@ -1,9 +1,9 @@
 package com.example.asistelo.screens
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.asistelo.R
@@ -33,7 +33,8 @@ class SubjectsOfStudentForAbsencesScreen : AppCompatActivity() {
 
         val subjectsRecyclerView = findViewById<RecyclerView>(R.id.subjectsOfStudentRecyclerView)
 
-        val subjectsAdapter = SubjectForAbsencesAdapter(subjectList!!, student, teacher,applicationContext)
+        val subjectsAdapter =
+            SubjectForAbsencesAdapter(subjectList!!, student, teacher, applicationContext)
 
         subjectsRecyclerView.layoutManager =
             GridLayoutManager(this, 1, RecyclerView.VERTICAL, false)

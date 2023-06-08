@@ -29,7 +29,7 @@ class StudentsOfClassScreen : AppCompatActivity() {
         val studentsRecyclerView = findViewById<RecyclerView>(R.id.studentsOfClassRecyclerView)
 
         if (students!!.size > 1) {
-            val studentAdapter = StudentAdapter(students,teacher ,applicationContext)
+            val studentAdapter = StudentAdapter(students, teacher, applicationContext)
             studentsRecyclerView.layoutManager =
                 GridLayoutManager(this, 1, RecyclerView.VERTICAL, false)
 

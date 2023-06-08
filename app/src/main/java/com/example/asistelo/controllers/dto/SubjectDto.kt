@@ -18,5 +18,5 @@ data class SubjectDto(
     @JsonProperty("teacher") val teacher: List<UserDto>?,
     @JsonProperty("classes") val classes: List<ClassDto>?,
     @JsonProperty("absence") val absence: List<AbsenceDto>?,
-    @JsonProperty("percentage")val percentage:Double?
+    @JsonProperty("percentage") val percentage: Double?
 ) : Serializable

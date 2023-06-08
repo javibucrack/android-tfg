@@ -1,16 +1,16 @@
 package com.example.asistelo.screens
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.asistelo.R
 import com.example.asistelo.adapter.StudentListForAbsencesAdapter
+import com.example.asistelo.config.RetrofitClient
 import com.example.asistelo.controllers.AbsenceController
-import com.example.asistelo.controllers.UserController
 import com.example.asistelo.controllers.dto.AbsenceDto
 import com.example.asistelo.controllers.dto.ClassDto
 import com.example.asistelo.controllers.dto.SubjectDto
@@ -23,9 +23,7 @@ import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.jackson.JacksonConverterFactory
-import java.util.Date
+import java.util.*
 
 class AddAbsencesToStudents : AppCompatActivity() {
     @OptIn(DelicateCoroutinesApi::class)
@@ -33,13 +31,7 @@ class AddAbsencesToStudents : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_absences_to_students)
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:8080")
-            .addConverterFactory(JacksonConverterFactory.create())
-            .build()
-
-
-        val absenceController = retrofit.create(AbsenceController::class.java)
+        val absenceController = RetrofitClient.retrofit.create(AbsenceController::class.java)
 
         val teacher = intent.getSerializableExtra("teacher") as UserDto
 
@@ -61,7 +53,7 @@ class AddAbsencesToStudents : AppCompatActivity() {
         val studentListRecyclerView = findViewById<RecyclerView>(R.id.studentListRecyclerView)
 
         val studentListForAbsencesAdapter =
-            StudentListForAbsencesAdapter(students, applicationContext, absenceController)
+            StudentListForAbsencesAdapter(students, applicationContext)
 
         studentListRecyclerView.layoutManager =
             GridLayoutManager(this, 1, RecyclerView.VERTICAL, false)

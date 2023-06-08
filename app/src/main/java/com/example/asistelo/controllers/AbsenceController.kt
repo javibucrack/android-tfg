@@ -2,11 +2,7 @@ package com.example.asistelo.controllers
 
 import com.example.asistelo.controllers.dto.AbsenceDto
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.DELETE
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface AbsenceController {
 

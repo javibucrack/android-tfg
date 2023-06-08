@@ -2,10 +2,10 @@ package com.example.asistelo.screens
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.asistelo.R
+import com.example.asistelo.config.RetrofitClient
 import com.example.asistelo.controllers.AbsenceController
 import com.example.asistelo.controllers.dto.AbsenceDto
 import com.example.asistelo.controllers.dto.SubjectDto
@@ -17,10 +17,6 @@ import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.jackson.JacksonConverterFactory
-import java.text.SimpleDateFormat
-import java.time.Instant
 import java.util.*
 
 class AddAbsenceScreen : AppCompatActivity() {
@@ -30,13 +26,7 @@ class AddAbsenceScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_absence_screen)
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:8080")
-            .addConverterFactory(JacksonConverterFactory.create())
-            .build()
-
-        val absenceController = retrofit.create(AbsenceController::class.java)
-
+        val absenceController = RetrofitClient.retrofit.create(AbsenceController::class.java)
 
         val subject = intent.getSerializableExtra("subject") as SubjectDto
 

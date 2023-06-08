@@ -11,12 +11,11 @@ import com.example.asistelo.R
 import com.example.asistelo.controllers.dto.SubjectDto
 import com.example.asistelo.controllers.dto.UserDto
 import com.example.asistelo.screens.AddAbsenceScreen
-import com.example.asistelo.screens.SubjectsOfStudentForAbsencesScreen
 
 class SubjectForAbsencesAdapter(
     val subjects: List<SubjectDto>,
     val student: UserDto,
-    val teacher:UserDto,
+    val teacher: UserDto,
     val context: Context
 ) :
     RecyclerView.Adapter<SubjectForAbsencesAdapter.ItemViewHolder>() {
@@ -42,8 +41,8 @@ class SubjectForAbsencesAdapter(
             val intent = Intent(holder.itemView.context, AddAbsenceScreen::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             intent.putExtra("subject", subject)
-            intent.putExtra("student",student)
-            intent.putExtra("teacher",teacher)
+            intent.putExtra("student", student)
+            intent.putExtra("teacher", teacher)
             holder.itemView.context.startActivity(intent)
         }
     }

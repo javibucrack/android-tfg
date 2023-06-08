@@ -3,7 +3,7 @@ package com.example.asistelo.controllers.dto
 import com.fasterxml.jackson.annotation.JsonFormat
 import com.fasterxml.jackson.annotation.JsonProperty
 import java.io.Serializable
-import java.util.Date
+import java.util.*
 
 data class UserDto(
     //Al crear los campos que pueden ser null, poner ?, y poner bien los Json Property. Implementar el serializable para que se puedan pasar los datos entre intents

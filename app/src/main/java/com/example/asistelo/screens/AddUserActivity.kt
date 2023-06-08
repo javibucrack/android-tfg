@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.asistelo.R
+import com.example.asistelo.config.RetrofitClient
 import com.example.asistelo.controllers.UserController
 import com.example.asistelo.controllers.dto.ClassDto
 import com.example.asistelo.controllers.dto.RolDto
@@ -17,8 +18,6 @@ import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.jackson.JacksonConverterFactory
 import java.util.*
 
 class AddUserActivity : AppCompatActivity() {
@@ -27,12 +26,7 @@ class AddUserActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_user)
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:8080")
-            .addConverterFactory(JacksonConverterFactory.create())
-            .build()
-
-        val userController = retrofit.create(UserController::class.java)
+        val userController = RetrofitClient.retrofit.create(UserController::class.java)
 
         val addUserButton = findViewById<Button>(R.id.addUserButton)
 
