@@ -55,12 +55,16 @@ class ChangePasswordActivity : AppCompatActivity() {
                             userController.changePass(user)
                         changePassword.enqueue(object : Callback<Void> {
                             override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                                Toast.makeText(
-                                    this@ChangePasswordActivity,
-                                    "Contraseña cambiada correctamente",
-                                    Toast.LENGTH_LONG
-                                ).show()
-                                finish()
+                                when (response.code()) {
+                                    200 -> {
+                                        Toast.makeText(
+                                            this@ChangePasswordActivity,
+                                            "Contraseña cambiada correctamente",
+                                            Toast.LENGTH_LONG
+                                        ).show()
+                                        finish()
+                                    }
+                                }
                             }
 
                             override fun onFailure(call: Call<Void>, t: Throwable) {

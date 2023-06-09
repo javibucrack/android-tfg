@@ -1,16 +1,22 @@
 package com.example.asistelo.screens
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.asistelo.R
+import com.example.asistelo.adapter.ClassForAbsencesAdapter
+import com.example.asistelo.adapter.SubjectForAddUserAdapter
 import com.example.asistelo.config.RetrofitClient
 import com.example.asistelo.controllers.UserController
 import com.example.asistelo.controllers.dto.ClassDto
 import com.example.asistelo.controllers.dto.RolDto
 import com.example.asistelo.controllers.dto.SubjectDto
 import com.example.asistelo.controllers.dto.UserDto
+import com.example.asistelo.decorator.SimpleItemDecoration
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -32,6 +38,30 @@ class AddUserActivity : AppCompatActivity() {
 
         val admin = intent.getSerializableExtra("admin") as UserDto
 
+        val subjects = intent.getSerializableExtra("subjects") as List<SubjectDto>
+
+        val subjectRecyclerView = findViewById<RecyclerView>(R.id.subjectListRecyclerView)
+
+        val subjectForAddUserAdapter = SubjectForAddUserAdapter(subjects, applicationContext)
+
+        subjectRecyclerView.layoutManager =
+            GridLayoutManager(this, 1, RecyclerView.VERTICAL, false)
+
+        subjectRecyclerView.addItemDecoration(SimpleItemDecoration(applicationContext, 5))
+
+        subjectRecyclerView.adapter = subjectForAddUserAdapter
+
+        val classList = intent.getSerializableExtra("classList") as List<ClassDto>
+
+        val classSpinner = findViewById<Spinner>(R.id.selectClassSpinnerForAddUser)
+
+        var selectedClass = ClassDto(null, null, null, null, null, null, null, null)
+
+        val classAdapter =
+            ClassForAbsencesAdapter(this, android.R.layout.simple_spinner_item, classList)
+        classAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        classSpinner.adapter = classAdapter
+
         val name = findViewById<EditText>(R.id.insertNameEditText)
 
         val firstSurname = findViewById<EditText>(R.id.insertFirstSurnameEditText)
@@ -47,9 +77,9 @@ class AddUserActivity : AppCompatActivity() {
         val selectedRol = RolDto(null, null)
 
 
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, roles)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        rolSpinner.adapter = adapter
+        val rolesAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, roles)
+        rolesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        rolSpinner.adapter = rolesAdapter
 
         rolSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
@@ -75,15 +105,41 @@ class AddUserActivity : AppCompatActivity() {
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
+                selectedRol.id = 1
                 // No se seleccionó nada en el spinner
             }
         }
+
+        // Aquí puedes agregar los listeners a los Spinners o hacer cualquier otra acción necesaria.
+        classSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                selectedClass = classList[position]
+                // Realiza alguna acción con la clase seleccionada
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                // No se seleccionó nada en el spinner
+            }
+        }
+
         val actualDate = Date()
 
-        val classes: List<ClassDto> = listOf()
-        val subjects: List<SubjectDto> = listOf()
-
         addUserButton.setOnClickListener {
+            val subjectList = mutableListOf<SubjectDto>()
+            for ((subjectId, isChecked) in subjectForAddUserAdapter.checkedMap) {
+                if (isChecked) {
+                    for (subject in subjects.indices) {
+                        if (subjects[subject].id == subjectId) {
+                            subjectList.add(subjects[subject])
+                        }
+                    }
+                }
+            }
             val user = UserDto(
                 null,
                 actualDate,
@@ -97,8 +153,8 @@ class AddUserActivity : AppCompatActivity() {
                 null,
                 selectedRol,
                 null,
-                subjects,
-                classes
+                subjectList,
+                mutableListOf(selectedClass)
             )
 
             GlobalScope.launch(Dispatchers.IO) {
@@ -113,6 +169,10 @@ class AddUserActivity : AppCompatActivity() {
                                     "Usuario creado correctamente",
                                     Toast.LENGTH_LONG
                                 ).show()
+                                val goHome = Intent(this@AddUserActivity, AdminHome::class.java)
+                                goHome.putExtra("admin",admin)
+                                startActivity(goHome)
+                            //TODO: que te lleve al home
                             }
                             409 -> {
                                 Toast.makeText(

@@ -9,6 +9,10 @@ import retrofit2.http.Path
 
 interface ClassController {
 
+    @GET("/classesList")
+    fun getAllClasses(
+    ): Call<List<ClassDto>>
+
     @GET("/classes/{idTeacher}")
     fun getClasses(
         @Path("idTeacher") idTeacher: Int,

@@ -39,42 +39,6 @@
         app:layout_constraintStart_toStartOf="@+id/guideline47"
         app:layout_constraintTop_toTopOf="@+id/guideline48" />
 
-    <TextView
-        android:id="@+id/textView20"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="Nombre"
-        android:textColor="#000000"
-        android:textSize="17sp"
-        app:layout_constraintStart_toStartOf="@+id/guideline47"
-        app:layout_constraintTop_toBottomOf="@+id/textView19" />
-
-    <TextView
-        android:id="@+id/textView23"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="Primer apellido"
-        android:textColor="#000000"
-        android:textSize="17sp"
-        app:layout_constraintStart_toStartOf="@+id/guideline47"
-        app:layout_constraintTop_toBottomOf="@+id/textView20" />
-
-    <TextView
-        android:id="@+id/textView22"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="Segundo apellido"
-        android:textColor="#000000"
-        android:textSize="17sp"
-        app:layout_constraintStart_toStartOf="@+id/guideline47"
-        app:layout_constraintTop_toBottomOf="@+id/textView23" />
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline50"
         android:layout_width="wrap_content"
@@ -86,109 +50,166 @@
         android:id="@+id/insertNameEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
         android:ems="10"
+        android:hint="Nombre"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textColor="#000000"
         android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView20"
-        app:layout_constraintEnd_toStartOf="@+id/guideline49"
-        app:layout_constraintStart_toStartOf="@+id/guideline50"
-        app:layout_constraintTop_toTopOf="@+id/textView20"
+        app:layout_constraintEnd_toStartOf="@+id/guideline50"
+        app:layout_constraintStart_toStartOf="@+id/guideline47"
+        app:layout_constraintTop_toBottomOf="@+id/textView19"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/insertFirstSurnameEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
         android:ems="10"
+        android:hint="Primer apellido"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textColor="#000000"
         android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView23"
+        app:layout_constraintBottom_toBottomOf="@+id/insertNameEditText"
         app:layout_constraintEnd_toStartOf="@+id/guideline49"
         app:layout_constraintStart_toStartOf="@+id/guideline50"
-        app:layout_constraintTop_toTopOf="@+id/textView23"
+        app:layout_constraintTop_toTopOf="@+id/insertNameEditText"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/insertSecondSurnameEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
         android:ems="10"
+        android:hint="Segundo apellido"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textColor="#000000"
         android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView22"
+        app:layout_constraintBottom_toBottomOf="@+id/insertEmailEditText"
         app:layout_constraintEnd_toStartOf="@+id/guideline49"
         app:layout_constraintStart_toStartOf="@+id/guideline50"
-        app:layout_constraintTop_toTopOf="@+id/textView22"
+        app:layout_constraintTop_toTopOf="@+id/insertEmailEditText"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/insertEmailEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
         android:ems="10"
+        android:hint="email"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textColor="#000000"
         android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView35"
-        app:layout_constraintEnd_toStartOf="@+id/guideline49"
-        app:layout_constraintStart_toStartOf="@+id/guideline50"
-        app:layout_constraintTop_toTopOf="@+id/textView35"
+        app:layout_constraintEnd_toStartOf="@+id/guideline50"
+        app:layout_constraintStart_toStartOf="@+id/guideline47"
+        app:layout_constraintTop_toBottomOf="@+id/insertNameEditText"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/textView26"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="sans-serif-medium"
         android:text="Rol"
         android:textColor="#000000"
         android:textSize="17sp"
         app:layout_constraintStart_toStartOf="@+id/guideline47"
-        app:layout_constraintTop_toBottomOf="@+id/textView35" />
+        app:layout_constraintTop_toBottomOf="@+id/insertEmailEditText" />
+
+    <TextView
+        android:id="@+id/textView48"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Clase"
+        android:textColor="#000000"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="@+id/guideline47"
+        app:layout_constraintTop_toBottomOf="@+id/textView26" />
+
+    <TextView
+        android:id="@+id/textView49"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Asignaturas:"
+        android:textColor="#000000"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="@+id/guideline47"
+        app:layout_constraintTop_toBottomOf="@+id/textView48" />
 
     <Spinner
         android:id="@+id/selectRolSpinner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:minHeight="48dp"
+        android:layout_marginStart="5dp"
+        android:minHeight="40dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView26"
         app:layout_constraintEnd_toStartOf="@+id/guideline49"
         app:layout_constraintStart_toStartOf="@+id/guideline50"
         app:layout_constraintTop_toTopOf="@+id/textView26"
         tools:ignore="SpeakableTextPresentCheck" />
 
+    <Spinner
+        android:id="@+id/selectClassSpinnerForAddUser"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:minHeight="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView48"
+        app:layout_constraintEnd_toStartOf="@+id/guideline49"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline50"
+        app:layout_constraintTop_toTopOf="@+id/textView48"
+        tools:ignore="SpeakableTextPresentCheck" />
+
     <Button
         android:id="@+id/addUserButton"
         android:layout_width="145dp"
         android:layout_height="60dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginBottom="15dp"
         android:backgroundTint="#000000"
         android:fontFamily="sans-serif-black"
         android:text="AÑADIR"
         android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline49"
-        app:layout_constraintStart_toStartOf="@+id/guideline47"
-        app:layout_constraintTop_toBottomOf="@+id/selectRolSpinner" />
+        app:layout_constraintHorizontal_bias="0.446"
+        app:layout_constraintStart_toStartOf="@+id/guideline47" />
 
-    <TextView
-        android:id="@+id/textView35"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/subjectListRecyclerView"
+        android:layout_width="400dp"
+        android:layout_height="271dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline93"
+        app:layout_constraintStart_toStartOf="@+id/guideline92"
+        app:layout_constraintTop_toBottomOf="@+id/textView49" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline92"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="Email"
-        android:textColor="#000000"
-        android:textSize="17sp"
-        app:layout_constraintStart_toStartOf="@+id/guideline47"
-        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="5dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline93"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="5dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
