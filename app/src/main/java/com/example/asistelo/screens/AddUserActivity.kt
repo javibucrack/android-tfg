@@ -113,7 +113,6 @@ class AddUserActivity : AppCompatActivity() {
             }
         }
 
-        // Aquí puedes agregar los listeners a los Spinners o hacer cualquier otra acción necesaria.
         classSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,
@@ -122,7 +121,6 @@ class AddUserActivity : AppCompatActivity() {
                 id: Long
             ) {
                 selectedClass = classList[position]
-                // Realiza alguna acción con la clase seleccionada
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -175,6 +173,7 @@ class AddUserActivity : AppCompatActivity() {
                                 val goHome = Intent(this@AddUserActivity, AdminHome::class.java)
                                 goHome.putExtra("admin", admin)
                                 startActivity(goHome)
+                                finish()
                                 //TODO: que te lleve al home
                             }
                             409 -> {

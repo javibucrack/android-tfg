@@ -1,5 +1,6 @@
 package com.example.asistelo.screens
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -97,6 +98,10 @@ class AddAbsencesToStudents : AppCompatActivity() {
                                             "Falta creada correctamente",
                                             Toast.LENGTH_LONG
                                         ).show()
+                                        val goHome = Intent(this@AddAbsencesToStudents, TeacherHome::class.java)
+                                        goHome.putExtra("teacher", teacher)
+                                        startActivity(goHome)
+                                        finish()
                                     }
                                     404 -> {
                                         Toast.makeText(

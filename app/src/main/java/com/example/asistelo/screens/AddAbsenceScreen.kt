@@ -1,6 +1,7 @@
 package com.example.asistelo.screens
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -88,6 +89,10 @@ class AddAbsenceScreen : AppCompatActivity() {
                                     "Falta creada correctamente",
                                     Toast.LENGTH_LONG
                                 ).show()
+                                val goHome = Intent(this@AddAbsenceScreen, TeacherHome::class.java)
+                                goHome.putExtra("teacher", teacher)
+                                startActivity(goHome)
+                                finish()
                             }
                             404 -> {
                                 Toast.makeText(

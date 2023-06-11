@@ -207,6 +207,7 @@ class TeacherHome : AppCompatActivity() {
                     Intent(this@TeacherHome, MainActivity::class.java)
                 Toast.makeText(this@TeacherHome, "Cerrando sesión", Toast.LENGTH_LONG).show()
                 startActivity(logOutIntent)
+                finish()
                 return true
             }
             else -> return super.onOptionsItemSelected(item)

@@ -179,7 +179,7 @@
         android:id="@+id/addUserButton"
         android:layout_width="145dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="40dp"
         android:backgroundTint="#000000"
         android:fontFamily="sans-serif-black"
         android:text="AÑADIR"
@@ -187,7 +187,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline49"
         app:layout_constraintHorizontal_bias="0.446"
-        app:layout_constraintStart_toStartOf="@+id/guideline47" />
+        app:layout_constraintStart_toStartOf="@+id/guideline47"
+        app:layout_constraintTop_toBottomOf="@+id/subjectListRecyclerView" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/subjectListRecyclerView"

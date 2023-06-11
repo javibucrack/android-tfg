@@ -1,5 +1,6 @@
 package com.example.asistelo.screens
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -69,6 +70,10 @@ class AddSubjectActivity : AppCompatActivity() {
                                     "Asignatura creada correctamente",
                                     Toast.LENGTH_LONG
                                 ).show()
+                                val goHome = Intent(this@AddSubjectActivity, AdminHome::class.java)
+                                goHome.putExtra("admin", admin)
+                                startActivity(goHome)
+                                finish()
                             }
                             409 -> {
                                 Toast.makeText(

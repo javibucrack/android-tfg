@@ -1,5 +1,6 @@
 package com.example.asistelo.screens
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -63,6 +64,10 @@ class AddClassActivity : AppCompatActivity() {
                                     "Clase creada correctamente",
                                     Toast.LENGTH_LONG
                                 ).show()
+                                val goHome = Intent(this@AddClassActivity, AdminHome::class.java)
+                                goHome.putExtra("admin", admin)
+                                startActivity(goHome)
+                                finish()
                             }
                             409 -> {
                                 Toast.makeText(

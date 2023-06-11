@@ -52,7 +52,6 @@ class SelectSubjectAbsencesActivity : AppCompatActivity() {
                 id: Long
             ) {
                 selectedSubject = subjectList[position]
-                // Realiza alguna acción con la asignatura seleccionada
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -83,11 +82,20 @@ class SelectSubjectAbsencesActivity : AppCompatActivity() {
                                     this@SelectSubjectAbsencesActivity,
                                     ViewAbsencesOfSubjectActivity::class.java
                                 )
-                            viewAbsencesBySubjectActivity.putExtra(
-                                "absences",
-                                ArrayList(absences)
-                            )
-                            startActivity(viewAbsencesBySubjectActivity)
+                            if (absences.size>0){
+                                viewAbsencesBySubjectActivity.putExtra(
+                                    "absences",
+                                    ArrayList(absences)
+                                )
+                                startActivity(viewAbsencesBySubjectActivity)
+                            }else{
+                                Toast.makeText(
+                                    this@SelectSubjectAbsencesActivity,
+                                    "No hay faltas",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                            }
+
                         }
                         404 -> {
                             Log.e("login", "Código de respuesta desconocido ${response.code()}")

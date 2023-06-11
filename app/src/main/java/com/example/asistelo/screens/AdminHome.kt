@@ -114,6 +114,7 @@ class AdminHome : AppCompatActivity() {
                     Intent(this@AdminHome, MainActivity::class.java)
                 Toast.makeText(this@AdminHome, "Cerrando sesión", Toast.LENGTH_LONG).show()
                 startActivity(logOutIntent)
+                finish()
                 return true
             }
             else -> return super.onOptionsItemSelected(item)

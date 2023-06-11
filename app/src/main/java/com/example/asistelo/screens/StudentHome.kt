@@ -62,17 +62,26 @@ class StudentHome : AppCompatActivity() {
                                     subjects.add(subject.name!!)
                                 }
                             }
-                            val showSubjectsIntent =
-                                Intent(this@StudentHome, StudentSubjectsScreen::class.java)
-                            showSubjectsIntent.putExtra(
-                                "student",
-                                intent.getSerializableExtra("student") as UserDto
-                            )
-                            showSubjectsIntent.putStringArrayListExtra(
-                                "subjects",
-                                ArrayList(subjects)
-                            )
-                            startActivity(showSubjectsIntent)
+                            if (subjects.size > 0) {
+                                val showSubjectsIntent =
+                                    Intent(this@StudentHome, StudentSubjectsScreen::class.java)
+                                showSubjectsIntent.putExtra(
+                                    "student",
+                                    intent.getSerializableExtra("student") as UserDto
+                                )
+                                showSubjectsIntent.putStringArrayListExtra(
+                                    "subjects",
+                                    ArrayList(subjects)
+                                )
+                                startActivity(showSubjectsIntent)
+                            } else {
+                                Toast.makeText(
+                                    this@StudentHome,
+                                    "No hay asignaturas",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                            }
+
                         }
                         404 -> {
                             Log.e("login", "Código de respuesta desconocido ${response.code()}")
@@ -118,17 +127,26 @@ class StudentHome : AppCompatActivity() {
                                     absences.add(absence)
                                 }
                             }
-                            val showAbsencesIntent =
-                                Intent(this@StudentHome, StudentAbsencesScreen::class.java)
-                            showAbsencesIntent.putExtra(
-                                "student",
-                                intent.getSerializableExtra("student") as UserDto
-                            )
-                            showAbsencesIntent.putExtra(
-                                "absences",
-                                ArrayList(absences)
-                            )
-                            startActivity(showAbsencesIntent)
+                            if (absences.size > 0) {
+                                val showAbsencesIntent =
+                                    Intent(this@StudentHome, StudentAbsencesScreen::class.java)
+                                showAbsencesIntent.putExtra(
+                                    "student",
+                                    intent.getSerializableExtra("student") as UserDto
+                                )
+                                showAbsencesIntent.putExtra(
+                                    "absences",
+                                    ArrayList(absences)
+                                )
+                                startActivity(showAbsencesIntent)
+                            } else {
+                                Toast.makeText(
+                                    this@StudentHome,
+                                    "No hay faltas",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                            }
+
                         }
                         404 -> {
                             Log.e("login", "Código de respuesta desconocido ${response.code()}")
@@ -173,7 +191,6 @@ class StudentHome : AppCompatActivity() {
                     intent.getSerializableExtra("student") as UserDto
                 )
                 startActivity(profileIntent)
-                // Open profile activity
                 return true
             }
             R.id.logOutMenu -> {
@@ -182,7 +199,6 @@ class StudentHome : AppCompatActivity() {
                 Toast.makeText(this@StudentHome, "Cerrando sesión", Toast.LENGTH_LONG).show()
                 startActivity(logOutIntent)
                 finish()
-                // Open settings activity
                 return true
             }
             else -> return super.onOptionsItemSelected(item)
