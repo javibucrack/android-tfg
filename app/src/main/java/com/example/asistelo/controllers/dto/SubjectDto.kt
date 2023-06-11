@@ -5,6 +5,9 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import java.io.Serializable
 import java.util.*
 
+/**
+ * Clase que contiene los atributos de las asignaturas.
+ */
 data class SubjectDto(
 
     @JsonProperty("id") val id: Int?,

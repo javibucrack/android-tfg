@@ -11,6 +11,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.asistelo.R
 import com.example.asistelo.controllers.dto.UserDto
 
+/**
+ * Clase que adapta la lista de usuarios (estudiantes) para poder enseñarla por pantalla,
+ * eligiendo que campos se quieren mostrar en un layout personalizado.
+ */
 class StudentListForAbsencesAdapter(
     val students: List<UserDto>,
     val context: Context

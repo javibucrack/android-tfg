@@ -5,6 +5,9 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import java.io.Serializable
 import java.util.*
 
+/**
+ * Clase que contiene los atributos de las clases.
+ */
 data class ClassDto(
     @JsonProperty("id") val id: Int?,
     @JsonProperty("dateCre") @JsonFormat(pattern = "dd/MM/yyyy") val dateCre: Date?,

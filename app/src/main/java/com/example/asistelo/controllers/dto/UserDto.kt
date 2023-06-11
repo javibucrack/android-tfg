@@ -5,6 +5,9 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import java.io.Serializable
 import java.util.*
 
+/**
+ * Clase que contiene los atributos de los usuarios (estudiantes, profesores y administradores).
+ */
 data class UserDto(
     //Al crear los campos que pueden ser null, poner ?, y poner bien los Json Property. Implementar el serializable para que se puedan pasar los datos entre intents
     @JsonProperty("id") val id: Int?,

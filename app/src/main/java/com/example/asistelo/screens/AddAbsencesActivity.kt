@@ -21,6 +21,10 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+/**
+ * Clase que permite buscar una lista de alumnos por clase y asignatura,
+ * para posteriormente poder pasar lista y ponerle falta.
+ */
 class AddAbsencesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +53,6 @@ class AddAbsencesActivity : AppCompatActivity() {
 
         val searchStudentsButton = findViewById<Button>(R.id.searchStudentsButton)
 
-        // Aquí puedes agregar los listeners a los Spinners o hacer cualquier otra acción necesaria.
         selectClassSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,
@@ -130,8 +133,6 @@ class AddAbsencesActivity : AppCompatActivity() {
                         Toast.LENGTH_LONG
                     ).show()
                 }
-
-
             })
         }
     }

@@ -4,6 +4,9 @@ import com.example.asistelo.controllers.dto.AbsenceDto
 import retrofit2.Call
 import retrofit2.http.*
 
+/**
+ * Interfaz que contiene los métodos del controlador de ausencias.
+ */
 interface AbsenceController {
 
     @GET("/absences/{teacher}/{subjectId}")

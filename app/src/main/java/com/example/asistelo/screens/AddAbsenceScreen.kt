@@ -19,6 +19,10 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
 
+/**
+ * Clase que permite elegir una fecha y un número de horas para
+ * poder poner una falta a una persona.
+ */
 class AddAbsenceScreen : AppCompatActivity() {
     @OptIn(DelicateCoroutinesApi::class)
     @SuppressLint("SetTextI18n", "SimpleDateFormat")

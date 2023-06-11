@@ -12,6 +12,10 @@ import com.example.asistelo.controllers.dto.SubjectDto
 import com.example.asistelo.controllers.dto.UserDto
 import com.example.asistelo.screens.AddAbsenceScreen
 
+/**
+ * Clase que adapta la lista de asignaturas para poder enseñarla por pantalla,
+ * eligiendo que campos se quieren mostrar en un layout personalizado.
+ */
 class SubjectForAbsencesAdapter(
     val subjects: List<SubjectDto>,
     val student: UserDto,

@@ -11,6 +11,9 @@ import com.example.asistelo.adapter.SubjectAdapter
 import com.example.asistelo.controllers.dto.UserDto
 import com.example.asistelo.decorator.SimpleItemDecoration
 
+/**
+ * Clase que enseña la lista de asignatuas de un estudiante.
+ */
 class StudentSubjectsScreen : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {

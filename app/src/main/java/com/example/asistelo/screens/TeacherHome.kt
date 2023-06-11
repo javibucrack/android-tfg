@@ -18,6 +18,10 @@ import com.example.asistelo.controllers.dto.ClassDto
 import com.example.asistelo.controllers.dto.UserDto
 import retrofit2.*
 
+/**
+ * Clase que se le enseña al profesor cuando inicia sesión.
+ * Contiene los botones con las distintas actividades que este puede hacer.
+ */
 class TeacherHome : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -196,7 +200,6 @@ class TeacherHome : AppCompatActivity() {
                     Intent(this@TeacherHome, ProfileScreen::class.java)
                 profileIntent.putExtra("user", intent.getSerializableExtra("teacher") as UserDto)
                 startActivity(profileIntent)
-                // Open profile activity
                 return true
             }
             R.id.logOutMenu -> {
@@ -204,7 +207,6 @@ class TeacherHome : AppCompatActivity() {
                     Intent(this@TeacherHome, MainActivity::class.java)
                 Toast.makeText(this@TeacherHome, "Cerrando sesión", Toast.LENGTH_LONG).show()
                 startActivity(logOutIntent)
-                // Open settings activity
                 return true
             }
             else -> return super.onOptionsItemSelected(item)

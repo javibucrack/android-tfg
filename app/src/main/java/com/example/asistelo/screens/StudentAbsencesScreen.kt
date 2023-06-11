@@ -12,6 +12,9 @@ import com.example.asistelo.controllers.dto.AbsenceDto
 import com.example.asistelo.controllers.dto.UserDto
 import com.example.asistelo.decorator.SimpleItemDecoration
 
+/**
+ * Clase que enseña la lista de ausencias de un alumno.
+ */
 class StudentAbsencesScreen : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {

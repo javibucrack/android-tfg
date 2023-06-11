@@ -4,6 +4,9 @@ import com.example.asistelo.controllers.dto.UserDto
 import retrofit2.Call
 import retrofit2.http.*
 
+/**
+ * Interfaz que contiene los métodos del controlador de usuarios.
+ */
 interface UserController {
 
     @GET("/user/{email}/{pass}")

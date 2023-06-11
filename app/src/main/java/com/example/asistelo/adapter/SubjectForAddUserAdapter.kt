@@ -14,6 +14,10 @@ import com.example.asistelo.controllers.dto.SubjectDto
 import java.text.SimpleDateFormat
 import java.util.*
 
+/**
+ * Clase que adapta la lista de asignaturas para poder enseñarla por pantalla,
+ * eligiendo que campos se quieren mostrar en un layout personalizado.
+ */
 class SubjectForAddUserAdapter(
     val subjects: List<SubjectDto>,
     val context: Context,

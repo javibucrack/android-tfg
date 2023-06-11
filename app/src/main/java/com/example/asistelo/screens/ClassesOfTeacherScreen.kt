@@ -12,6 +12,9 @@ import com.example.asistelo.controllers.dto.ClassDto
 import com.example.asistelo.controllers.dto.UserDto
 import com.example.asistelo.decorator.SimpleItemDecoration
 
+/**
+ * Clase que enseña las clases a las que pertenece un profesor.
+ */
 class ClassesOfTeacherScreen : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {

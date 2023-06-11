@@ -8,6 +8,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.asistelo.R
 
+/**
+ * Clase que adapta la lista de asignaturas (pasadas como String) para poder enseñarla por pantalla,
+ * eligiendo que campos se quieren mostrar en un layout personalizado.
+ */
 class SubjectAdapter(val subjects: List<String>, val context: Context) :
     RecyclerView.Adapter<SubjectAdapter.ItemViewHolder>() {
 

@@ -11,6 +11,10 @@ import com.example.asistelo.controllers.dto.AbsenceDto
 import java.text.SimpleDateFormat
 import java.util.*
 
+/**
+ * Clase que adapta la lista de ausencias para poder enseñarla por pantalla,
+ * eligiendo que campos se quieren mostrar en un layout personalizado.
+ */
 class AbsenceAdapter(val absences: List<AbsenceDto>, val context: Context) :
     RecyclerView.Adapter<AbsenceAdapter.ItemViewHolder>() {
 

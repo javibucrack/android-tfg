@@ -22,6 +22,9 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
 
+/**
+ * Clase que enseña la lista de ausencias de una asignatura.
+ */
 class ViewAbsencesOfSubjectActivity : AppCompatActivity() {
     @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {

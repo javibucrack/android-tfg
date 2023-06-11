@@ -13,6 +13,10 @@ import com.example.asistelo.controllers.dto.AbsenceDto
 import java.text.SimpleDateFormat
 import java.util.*
 
+/**
+ * Clase que adapta la lista de ausencias para poder quitarla mediante
+ * un checkbox "deleteAbsenceCheckBox"
+ */
 class AbsencesOfSubjectAdapter(
     val absences: List<AbsenceDto>,
     val context: Context,

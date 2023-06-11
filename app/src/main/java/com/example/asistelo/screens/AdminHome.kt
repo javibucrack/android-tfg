@@ -3,7 +3,6 @@ package com.example.asistelo.screens
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
@@ -14,15 +13,13 @@ import com.example.asistelo.R
 import com.example.asistelo.config.RetrofitClient
 import com.example.asistelo.controllers.ClassController
 import com.example.asistelo.controllers.SubjectController
-import com.example.asistelo.controllers.UserController
-import com.example.asistelo.controllers.dto.ClassDto
-import com.example.asistelo.controllers.dto.SubjectDto
 import com.example.asistelo.controllers.dto.UserDto
 import kotlinx.coroutines.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
+/**
+ * Clase que se le enseña al administrador cuando inicia sesión.
+ * Contiene los botones con las distintas actividades que este puede hacer.
+ */
 class AdminHome : AppCompatActivity() {
     @OptIn(DelicateCoroutinesApi::class)
     @SuppressLint("SetTextI18n")
@@ -35,10 +32,6 @@ class AdminHome : AppCompatActivity() {
         val subjectController = RetrofitClient.retrofit.create(SubjectController::class.java)
 
         val admin = intent.getSerializableExtra("admin") as UserDto
-
-        val subjects = mutableListOf<SubjectDto>()
-
-        val classes = mutableListOf<ClassDto>()
 
         val adminNameTextView = findViewById<TextView>(R.id.adminNameTextView)
         if (admin.secondSurname == null) {
@@ -73,7 +66,6 @@ class AdminHome : AppCompatActivity() {
                 val classList = getClassListDeferred.await()
                 val subjectList = getSubjectsDeferred.await()
 
-                // Verifica si las respuestas de las llamadas son exitosas
                 if (classList != null && subjectList != null) {
                     addUserActivityIntent.putExtra("classList", ArrayList(classList))
                     addUserActivityIntent.putExtra("subjects", ArrayList(subjectList))
@@ -88,68 +80,6 @@ class AdminHome : AppCompatActivity() {
                 }
             }
         }
-
-
-//            getClassList.enqueue(object : Callback<List<ClassDto>> {
-//                override fun onResponse(
-//                    call: Call<List<ClassDto>>,
-//                    response: Response<List<ClassDto>>
-//                ) {
-//                    when (response.code()) {
-//                        200 -> {
-//                            val classSize = response.body()!!.size
-//                            for (clase in 0 until classSize) {
-//                                classes.add(response.body()!![clase])
-//                            }
-//                            classes.add(
-//                                0,
-//                                ClassDto(null, null, null, "ninguno", null, null, null, null)
-//                            )
-//
-//                            addUserActivityIntent.putExtra("classList", ArrayList(classes))
-//                            addUserActivityIntent.putExtra("admin", admin)
-//                            startActivity(addUserActivityIntent)
-//                        }
-//                    }
-//                }
-//
-//                override fun onFailure(call: Call<List<ClassDto>>, t: Throwable) {
-//                    Toast.makeText(
-//                        this@AdminHome,
-//                        "${t.message}",
-//                        Toast.LENGTH_LONG
-//                    ).show()
-//                }
-//            })
-//
-//            getSubjects.enqueue(object : Callback<List<SubjectDto>> {
-//                override fun onResponse(
-//                    call: Call<List<SubjectDto>>,
-//                    response: Response<List<SubjectDto>>
-//                ) {
-//                    when (response.code()) {
-//                        200 -> {
-//                            val subjectsSize = response.body()!!.size
-//                            for (subject in 0 until subjectsSize) {
-//                                subjects.add(response.body()!![subject])
-//                            }
-//
-//                            addUserActivityIntent.putExtra("subjects", ArrayList(subjects))
-//                            addUserActivityIntent.putExtra("admin", admin)
-//                            startActivity(addUserActivityIntent)
-//                        }
-//                    }
-//                }
-//
-//                override fun onFailure(call: Call<List<SubjectDto>>, t: Throwable) {
-//                    Toast.makeText(
-//                        this@AdminHome,
-//                        "${t.message}",
-//                        Toast.LENGTH_LONG
-//                    ).show()
-//                }
-//            })
-//        }
 
         addClassButton.setOnClickListener {
             val addUserActivityIntent = Intent(this@AdminHome, AddClassActivity::class.java)
@@ -177,7 +107,6 @@ class AdminHome : AppCompatActivity() {
                     Intent(this@AdminHome, ProfileScreen::class.java)
                 profileIntent.putExtra("user", intent.getSerializableExtra("admin") as UserDto)
                 startActivity(profileIntent)
-                // Open profile activity
                 return true
             }
             R.id.logOutMenu -> {
@@ -185,7 +114,6 @@ class AdminHome : AppCompatActivity() {
                     Intent(this@AdminHome, MainActivity::class.java)
                 Toast.makeText(this@AdminHome, "Cerrando sesión", Toast.LENGTH_LONG).show()
                 startActivity(logOutIntent)
-                // Open settings activity
                 return true
             }
             else -> return super.onOptionsItemSelected(item)

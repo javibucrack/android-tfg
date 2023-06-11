@@ -19,6 +19,9 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
 
+/**
+ * Clase que permite crear una asignatura nueva.
+ */
 class AddSubjectActivity : AppCompatActivity() {
     @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {

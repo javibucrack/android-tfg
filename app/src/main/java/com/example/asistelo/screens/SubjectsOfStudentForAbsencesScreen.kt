@@ -11,6 +11,10 @@ import com.example.asistelo.adapter.SubjectForAbsencesAdapter
 import com.example.asistelo.controllers.dto.UserDto
 import com.example.asistelo.decorator.SimpleItemDecoration
 
+/**
+ * Clase que enseña la lista de asignaturas de un estudiante, para
+ * posteriormente poder ponerle una ausencia.
+ */
 class SubjectsOfStudentForAbsencesScreen : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {

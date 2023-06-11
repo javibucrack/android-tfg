@@ -19,8 +19,11 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+/**
+ * Clase que se le enseña al estudiante cuando inicia sesión.
+ * Contiene los botones con las distintas actividades que este puede hacer.
+ */
 class StudentHome : AppCompatActivity() {
-
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {

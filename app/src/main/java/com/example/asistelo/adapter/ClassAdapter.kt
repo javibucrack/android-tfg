@@ -12,6 +12,10 @@ import com.example.asistelo.controllers.dto.ClassDto
 import com.example.asistelo.controllers.dto.UserDto
 import com.example.asistelo.screens.StudentsOfClassScreen
 
+/**
+ * Clase que adapta la lista de clases para poder enseñarla por pantalla,
+ * eligiendo que campos se quieren mostrar en un layout personalizado.
+ */
 class ClassAdapter(val classes: List<ClassDto>, val teacher: UserDto, val context: Context) :
     RecyclerView.Adapter<ClassAdapter.ItemViewHolder>() {
 

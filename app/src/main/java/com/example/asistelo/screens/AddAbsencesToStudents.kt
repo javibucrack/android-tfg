@@ -25,6 +25,9 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
 
+/**
+ * Clase que permite pasar lista y poner falta a una lista de alumnos.
+ */
 class AddAbsencesToStudents : AppCompatActivity() {
     @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {

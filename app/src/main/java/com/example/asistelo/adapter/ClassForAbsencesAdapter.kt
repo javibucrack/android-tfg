@@ -7,6 +7,10 @@ import android.widget.ArrayAdapter
 import android.widget.TextView
 import com.example.asistelo.controllers.dto.ClassDto
 
+/**
+ * Clase que adapta la lista de clases para poder enseñarla por pantalla,
+ * eligiendo que campos se quieren mostrar en un layout personalizado.
+ */
 class ClassForAbsencesAdapter(
     context: Context,
     resource: Int,

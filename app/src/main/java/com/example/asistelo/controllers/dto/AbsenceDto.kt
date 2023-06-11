@@ -5,6 +5,9 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import java.io.Serializable
 import java.util.*
 
+/**
+ * Clase que contiene los atributos de las ausencias.
+ */
 data class AbsenceDto(
     @JsonProperty("id") val id: Int?,
     @JsonProperty("numHours") val numHours: Int?,

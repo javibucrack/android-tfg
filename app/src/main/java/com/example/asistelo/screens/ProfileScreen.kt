@@ -8,6 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.asistelo.R
 import com.example.asistelo.controllers.dto.UserDto
 
+/**
+ * Clase que enseña la información de cualquier usuario.
+ */
 class ProfileScreen : AppCompatActivity() {
 
 

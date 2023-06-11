@@ -7,6 +7,10 @@ import android.widget.ArrayAdapter
 import android.widget.TextView
 import com.example.asistelo.controllers.dto.SubjectDto
 
+/**
+ * Clase que adapta la lista de asignaturas para poder enseñarla por pantalla,
+ * eligiendo que campos se quieren mostrar en un layout personalizado.
+ */
 class SubjectForAbsenceListAdapter(
     context: Context,
     resource: Int,

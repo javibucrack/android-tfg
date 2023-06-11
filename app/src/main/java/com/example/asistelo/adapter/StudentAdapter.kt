@@ -12,6 +12,10 @@ import com.example.asistelo.R
 import com.example.asistelo.controllers.dto.UserDto
 import com.example.asistelo.screens.SubjectsOfStudentForAbsencesScreen
 
+/**
+ * Clase que adapta la lista de usuarios (en este caso estudiantes) para poder enseñarla por pantalla,
+ * eligiendo que campos se quieren mostrar en un layout personalizado.
+ */
 class StudentAdapter(val students: List<UserDto>, val teacher: UserDto, val context: Context) :
     RecyclerView.Adapter<StudentAdapter.ItemViewHolder>() {
 

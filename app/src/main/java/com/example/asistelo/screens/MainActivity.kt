@@ -15,6 +15,10 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+/**
+ * Clase MainActivity que es la principal del proyecto, la que se abre nada más abrir la aplicación,
+ * y que contiene el inicio de sesión.
+ */
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +34,10 @@ class MainActivity : AppCompatActivity() {
                 findViewById<EditText>(R.id.passwordPlainText).text.toString()
             )
 
+            /**
+             * Método que permite el inicio de sesión, y que dependiendo del código de respuesta
+             * del servicio, realizará una acción u otra.
+             */
             user.enqueue(object : Callback<UserDto> {
                 override fun onResponse(call: Call<UserDto>, response: Response<UserDto>) {
                     when (response.code()) {
@@ -63,7 +71,7 @@ class MainActivity : AppCompatActivity() {
                             Log.e("login", "Código de respuesta desconocido ${response.code()}")
                             Toast.makeText(
                                 this@MainActivity,
-                                " ${response.body()}",
+                                "Los datos introducidos no son correctos",
                                 Toast.LENGTH_LONG
                             ).show()
                         }
@@ -71,10 +79,13 @@ class MainActivity : AppCompatActivity() {
 
                 }
 
+                /**
+                 * Método que se lanza en caso de fallar la conexión al Retrofit.
+                 */
                 override fun onFailure(call: Call<UserDto>, t: Throwable) {
                     Toast.makeText(
                         this@MainActivity,
-                        "${t.message}",
+                        "No es posible conectarse.\nPor favor intentalo más tarde",
                         Toast.LENGTH_LONG
                     ).show()
                 }

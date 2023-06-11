@@ -26,6 +26,9 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
 
+/**
+ * Clase que permite crear un usuario nuevo.
+ */
 class AddUserActivity : AppCompatActivity() {
     @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -170,9 +173,9 @@ class AddUserActivity : AppCompatActivity() {
                                     Toast.LENGTH_LONG
                                 ).show()
                                 val goHome = Intent(this@AddUserActivity, AdminHome::class.java)
-                                goHome.putExtra("admin",admin)
+                                goHome.putExtra("admin", admin)
                                 startActivity(goHome)
-                            //TODO: que te lleve al home
+                                //TODO: que te lleve al home
                             }
                             409 -> {
                                 Toast.makeText(

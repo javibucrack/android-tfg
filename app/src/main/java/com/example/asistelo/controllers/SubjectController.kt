@@ -7,6 +7,9 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
 
+/**
+ * Interfaz que contiene los métodos del controlador de asignaturas.
+ */
 interface SubjectController {
 
     @GET("/subjects")

@@ -12,6 +12,9 @@ import com.example.asistelo.controllers.dto.ClassDto
 import com.example.asistelo.controllers.dto.UserDto
 import com.example.asistelo.decorator.SimpleItemDecoration
 
+/**
+ * Clase que enseña la lista de alumnos de una clase.
+ */
 class StudentsOfClassScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
