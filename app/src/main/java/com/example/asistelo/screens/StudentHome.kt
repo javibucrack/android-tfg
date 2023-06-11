@@ -181,6 +181,7 @@ class StudentHome : AppCompatActivity() {
                     Intent(this@StudentHome, MainActivity::class.java)
                 Toast.makeText(this@StudentHome, "Cerrando sesión", Toast.LENGTH_LONG).show()
                 startActivity(logOutIntent)
+                finish()
                 // Open settings activity
                 return true
             }

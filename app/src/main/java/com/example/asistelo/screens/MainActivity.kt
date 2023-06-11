@@ -1,10 +1,13 @@
 package com.example.asistelo.screens
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.text.InputType
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.asistelo.R
@@ -20,6 +23,7 @@ import retrofit2.Response
  * y que contiene el inicio de sesión.
  */
 class MainActivity : AppCompatActivity() {
+    @SuppressLint("CutPasteId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -91,5 +95,29 @@ class MainActivity : AppCompatActivity() {
                 }
             })
         }
+        val togglePasswordButton = findViewById<ImageButton>(R.id.showPasswordButton)
+        val passwordPlainText = findViewById<EditText>(R.id.passwordPlainText)
+
+        var isPasswordVisible = false
+
+        togglePasswordButton.setOnClickListener {
+            isPasswordVisible = !isPasswordVisible
+
+            val eyeIcon = if (isPasswordVisible) {
+                R.drawable.eye_open
+            } else {
+                R.drawable.eye_closed
+            }
+            togglePasswordButton.setImageResource(eyeIcon)
+
+            val inputType = if (isPasswordVisible) {
+                InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+            } else {
+                InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+            }
+            passwordPlainText.inputType = inputType
+            passwordPlainText.setSelection(passwordPlainText.length())
+        }
+
     }
 }

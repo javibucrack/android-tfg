@@ -1,8 +1,11 @@
 package com.example.asistelo.screens
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.text.InputType
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.asistelo.R
@@ -21,6 +24,7 @@ import retrofit2.Response
  * Clase que permite cambiar la contraseña de una cuenta.
  */
 class ChangePasswordActivity : AppCompatActivity() {
+    @SuppressLint("CutPasteId")
     @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -81,6 +85,72 @@ class ChangePasswordActivity : AppCompatActivity() {
                     }
                 }
             }
+        }
+
+        val togglePasswordButton1 = findViewById<ImageButton>(R.id.showPasswordButton1)
+        val togglePasswordButton2 = findViewById<ImageButton>(R.id.showPasswordButton2)
+        val togglePasswordButton3 = findViewById<ImageButton>(R.id.showPasswordButton3)
+        val passwordPlainText1 = findViewById<EditText>(R.id.actualPasswordEditText)
+        val passwordPlainText2 = findViewById<EditText>(R.id.newPasswordFirstTryEditText)
+        val passwordPlainText3 = findViewById<EditText>(R.id.newPasswordSecondTryEditText)
+
+        var isPasswordVisible = false
+
+        togglePasswordButton1.setOnClickListener {
+            isPasswordVisible = !isPasswordVisible
+
+            val eyeIcon = if (isPasswordVisible) {
+                R.drawable.eye_open
+            } else {
+                R.drawable.eye_closed
+            }
+            togglePasswordButton1.setImageResource(eyeIcon)
+
+            val inputType = if (isPasswordVisible) {
+                InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+            } else {
+                InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+            }
+            passwordPlainText1.inputType = inputType
+            passwordPlainText1.setSelection(passwordPlainText1.length())
+        }
+
+        togglePasswordButton2.setOnClickListener {
+            isPasswordVisible = !isPasswordVisible
+
+            val eyeIcon = if (isPasswordVisible) {
+                R.drawable.eye_open
+            } else {
+                R.drawable.eye_closed
+            }
+            togglePasswordButton2.setImageResource(eyeIcon)
+
+            val inputType = if (isPasswordVisible) {
+                InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+            } else {
+                InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+            }
+            passwordPlainText2.inputType = inputType
+            passwordPlainText2.setSelection(passwordPlainText2.length())
+        }
+
+        togglePasswordButton3.setOnClickListener {
+            isPasswordVisible = !isPasswordVisible
+
+            val eyeIcon = if (isPasswordVisible) {
+                R.drawable.eye_open
+            } else {
+                R.drawable.eye_closed
+            }
+            togglePasswordButton3.setImageResource(eyeIcon)
+
+            val inputType = if (isPasswordVisible) {
+                InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+            } else {
+                InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+            }
+            passwordPlainText3.inputType = inputType
+            passwordPlainText3.setSelection(passwordPlainText3.length())
         }
     }
 }
