@@ -84,8 +84,9 @@
 
     <Button
         android:id="@+id/addAbsencesToStudentListButton"
-        android:layout_width="147dp"
-        android:layout_height="45dp"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="10dp"
         android:backgroundTint="#000000"
         android:fontFamily="sans-serif-black"
         android:text="PASAR LISTA"

@@ -61,7 +61,6 @@ class AddAbsencesActivity : AppCompatActivity() {
                 id: Long
             ) {
                 selectedClass = classList[position]
-                // Realiza alguna acción con la clase seleccionada
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -77,7 +76,6 @@ class AddAbsencesActivity : AppCompatActivity() {
                 id: Long
             ) {
                 selectedSubject = subjectList[position]
-                // Realiza alguna acción con la asignatura seleccionada
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -103,22 +101,34 @@ class AddAbsencesActivity : AppCompatActivity() {
                             for (student in 0 until studentsSize) {
                                 students.add(response.body()!![student])
                             }
-                            val addAbsencesToStudents =
-                                Intent(this@AddAbsencesActivity, AddAbsencesToStudents::class.java)
-                            addAbsencesToStudents.putExtra(
-                                "teacher",
-                                intent.getSerializableExtra("teacher") as UserDto
-                            )
-                            addAbsencesToStudents.putExtra("students", ArrayList(students))
-                            addAbsencesToStudents.putExtra("class", selectedClass)
-                            addAbsencesToStudents.putExtra("subject", selectedSubject)
-                            startActivity(addAbsencesToStudents)
+                            if (students.size > 0) {
+                                val addAbsencesToStudents =
+                                    Intent(
+                                        this@AddAbsencesActivity,
+                                        AddAbsencesToStudents::class.java
+                                    )
+                                addAbsencesToStudents.putExtra(
+                                    "teacher",
+                                    intent.getSerializableExtra("teacher") as UserDto
+                                )
+                                addAbsencesToStudents.putExtra("students", ArrayList(students))
+                                addAbsencesToStudents.putExtra("class", selectedClass)
+                                addAbsencesToStudents.putExtra("subject", selectedSubject)
+                                startActivity(addAbsencesToStudents)
+                            } else {
+                                Toast.makeText(
+                                    this@AddAbsencesActivity,
+                                    "No hay estudiantes",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                            }
+
                         }
                         404 -> {
                             Log.e("login", "Código de respuesta desconocido ${response.code()}")
                             Toast.makeText(
                                 this@AddAbsencesActivity,
-                                " ${response.body()}",
+                                "No hay estudiantes",
                                 Toast.LENGTH_LONG
                             ).show()
                         }
