@@ -22,6 +22,6 @@ data class UserDto(
     @JsonProperty("userMod") val userMod: Int?,
     @JsonProperty("role") val role: RolDto?,
     @JsonProperty("absenceList") val absenceList: List<AbsenceDto>?,
-    @JsonProperty("subjectList") val subjectList: List<SubjectDto>?,
-    @JsonProperty("classList") val classList: List<ClassDto>?,
+    @JsonProperty("subjectList") var subjectList: List<SubjectDto>?,
+    @JsonProperty("classList") var classList: List<ClassDto>?,
 ) : Serializable

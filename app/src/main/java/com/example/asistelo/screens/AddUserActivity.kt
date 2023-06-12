@@ -154,9 +154,13 @@ class AddUserActivity : AppCompatActivity() {
                 null,
                 selectedRol,
                 null,
-                subjectList,
-                mutableListOf(selectedClass)
+                mutableListOf(),
+                mutableListOf()
             )
+            if (selectedRol.id != 3) {
+                user.subjectList = subjectList
+                user.classList = mutableListOf(selectedClass)
+            }
 
             GlobalScope.launch(Dispatchers.IO) {
                 val action =
@@ -174,7 +178,6 @@ class AddUserActivity : AppCompatActivity() {
                                 goHome.putExtra("admin", admin)
                                 startActivity(goHome)
                                 finish()
-                                //TODO: que te lleve al home
                             }
                             409 -> {
                                 Toast.makeText(
